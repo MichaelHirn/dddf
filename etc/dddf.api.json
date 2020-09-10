@@ -6,18 +6,18 @@
     "oldestForwardsCompatibleVersion": 1001
   },
   "kind": "Package",
-  "canonicalReference": "ts-template!",
+  "canonicalReference": "dddf!",
   "docComment": "",
-  "name": "ts-template",
+  "name": "dddf",
   "members": [
     {
       "kind": "EntryPoint",
-      "canonicalReference": "ts-template!",
+      "canonicalReference": "dddf!",
       "name": "",
       "members": [
         {
           "kind": "Class",
-          "canonicalReference": "ts-template!Test:class",
+          "canonicalReference": "dddf!Test:class",
           "docComment": "",
           "excerptTokens": [
             {
@@ -30,7 +30,7 @@
           "members": [
             {
               "kind": "Constructor",
-              "canonicalReference": "ts-template!Test:constructor(1)",
+              "canonicalReference": "dddf!Test:constructor(1)",
               "docComment": "/**\n * Constructs a new instance of the `Test` class\n */\n",
               "excerptTokens": [
                 {
@@ -60,7 +60,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "ts-template!Test#hello:member(1)",
+              "canonicalReference": "dddf!Test#hello:member(1)",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -88,7 +88,7 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "ts-template!Test#name:member",
+              "canonicalReference": "dddf!Test#name:member",
               "docComment": "",
               "excerptTokens": [
                 {
