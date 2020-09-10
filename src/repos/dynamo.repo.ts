@@ -1,4 +1,5 @@
 import * as AWS from 'aws-sdk'
+import { Entity } from '../entity'
 import { IRepo } from '../repo'
 import { Result } from '../result'
 
@@ -10,7 +11,7 @@ export interface IDynamoRepoConfig {
   tableName: string
 }
 
-export abstract class DynamoRepo<T, U extends IDynamoRepoConfig = IDynamoRepoConfig> implements IRepo<T> {
+export abstract class DynamoRepo<T extends Entity<any>, U extends IDynamoRepoConfig = IDynamoRepoConfig> implements IRepo<T> {
   public readonly tableName: string
   protected db: AWS.DynamoDB
   public model: AWS.DynamoDB.DocumentClient
