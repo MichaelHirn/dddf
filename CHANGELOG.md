@@ -1,3 +1,10 @@
+## [1.1.0](https://github.com/MichaelHirn/dddf/compare/v1.0.0...v1.1.0) (2020-09-10)
+
+
+### Features
+
+* add cache repo ([3537a24](https://github.com/MichaelHirn/dddf/commit/3537a24b26c604f79c41673bda139588109023e0))
+
 ## 1.0.0 (2020-09-10)
 
 
