@@ -1,3 +1,4 @@
+import { CacheRepo } from './repos/cache.repo'
 import { DynamoRepo } from './repos/dynamo.repo'
 import { FaastUseCase } from './useCases/faast.useCase'
 import { S3Repo } from './repos/s3.repo'
@@ -12,7 +13,8 @@ export { ValueObject } from './valueObject'
 
 export const repos = {
   S3Repo,
-  DynamoRepo
+  DynamoRepo,
+  CacheRepo
 }
 
 export const useCases = {

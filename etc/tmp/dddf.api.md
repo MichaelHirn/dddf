@@ -27,7 +27,7 @@ export abstract class Entity<T> {
 }
 
 // @public (undocumented)
-export interface IRepo<T, R = void> {
+export interface IRepo<T extends Entity<any>, R = void> {
     // (undocumented)
     load(t: string, args: any): Promise<Result<T>>;
     // (undocumented)

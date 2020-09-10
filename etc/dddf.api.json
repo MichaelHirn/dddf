@@ -264,7 +264,20 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export interface IRepo<T, R = "
+              "text": "export interface IRepo<T extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "Entity",
+              "canonicalReference": "dddf!Entity:class"
+            },
+            {
+              "kind": "Content",
+              "text": "<any>"
+            },
+            {
+              "kind": "Content",
+              "text": ", R = "
             },
             {
               "kind": "Content",
@@ -280,8 +293,8 @@
             {
               "typeParameterName": "T",
               "constraintTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
+                "startIndex": 1,
+                "endIndex": 3
               },
               "defaultTypeTokenRange": {
                 "startIndex": 0,
@@ -295,8 +308,8 @@
                 "endIndex": 0
               },
               "defaultTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
+                "startIndex": 4,
+                "endIndex": 5
               }
             }
           ],

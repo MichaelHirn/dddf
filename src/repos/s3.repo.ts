@@ -1,6 +1,7 @@
 import * as AWS from 'aws-sdk'
 import * as Rx from 'rxjs'
 import * as RxOps from 'rxjs/operators'
+import { Entity } from '../entity'
 import { IRepo } from '../repo'
 import { Result } from '../result'
 import hash from 'object-hash'
@@ -19,7 +20,7 @@ export interface IS3RepoConfig {
   model: AWS.S3
 }
 
-export abstract class S3Repo<T, R = void, U extends IS3RepoConfig = IS3RepoConfig> implements IRepo<T, R> {
+export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoConfig = IS3RepoConfig> implements IRepo<T, R> {
   public readonly bucketName: string
   public model: AWS.S3
 
