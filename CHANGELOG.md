@@ -1,3 +1,10 @@
+## 1.0.0 (2020-09-10)
+
+
+### Features
+
+* add core classes ([0c10664](https://github.com/MichaelHirn/dddf/commit/0c10664105c352622931e0635cb91e264c919f54))
+
 ### [1.2.3](https://github.com/MichaelHirn/ts-template/compare/v1.2.2...v1.2.3) (2020-09-09)
 
 

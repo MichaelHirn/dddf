@@ -1,6 +1,6 @@
 {
   "name": "dddf",
-  "version": "0.8.0",
+  "version": "1.0.0",
   "description": "Domain Driven Design Framework (DDDF)",
   "public": true,
   "main": "dist/src/index.js",
