@@ -1,6 +1,5 @@
-import { Test } from '../src'
+import * as ddd from '../src'
 
 test('hello with correct name', () => {
-  const test = new Test('Jon')
-  expect(test.hello()).toBe('Hello Jon')
+  console.log(Object.keys(ddd))
 })

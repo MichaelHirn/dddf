@@ -1,11 +1,17 @@
 {
-  "name": "ts-template",
-  "version": "1.2.3",
-  "description": "",
-  "private": true,
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "dependencies": {},
+  "name": "dddf",
+  "version": "0.8.0",
+  "description": "Domain Driven Design Framework (DDDF)",
+  "public": true,
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "dependencies": {
+    "aws-sdk": "^2.749.0",
+    "faastjs": "^5.2.6",
+    "object-hash": "^2.0.3",
+    "parse-domain": "^3.0.2",
+    "shallow-equal-object": "^1.1.1"
+  },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
@@ -44,13 +50,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MichaelHirn/ts-template.git"
+    "url": "git+https://github.com/MichaelHirn/dddf.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MichaelHirn/ts-template/issues"
+    "url": "https://github.com/MichaelHirn/dddf/issues"
   },
-  "homepage": "https://github.com/MichaelHirn/ts-template#readme"
+  "homepage": "https://github.com/MichaelHirn/dddf#readme"
 }
