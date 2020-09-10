@@ -5,7 +5,13 @@
   "public": true,
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
-  "dependencies": {},
+  "dependencies": {
+    "aws-sdk": "^2.749.0",
+    "faastjs": "^5.2.6",
+    "object-hash": "^2.0.3",
+    "parse-domain": "^3.0.2",
+    "shallow-equal-object": "^1.1.1"
+  },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",

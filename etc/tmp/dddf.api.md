@@ -4,15 +4,112 @@
 
 ```ts
 
+import * as AWS_2 from 'aws-sdk';
+import * as Faast from 'faastjs';
+import { parseDomain } from 'parse-domain';
+import * as Rx from 'rxjs';
+
 // @public (undocumented)
-export class Test {
-    constructor(name: any);
-    // (undocumented)
-    hello(): string;
-    // (undocumented)
-    name: string;
+export abstract class AggregateRoot<T> extends Entity<T> {
 }
 
+// @public (undocumented)
+export abstract class Entity<T> {
+    constructor(props: T, id: string);
+    // (undocumented)
+    equals(object?: Entity<T>): boolean;
+    // (undocumented)
+    get id(): string;
+    // (undocumented)
+    protected readonly _id: string;
+    // (undocumented)
+    protected props: T;
+}
+
+// @public (undocumented)
+export interface IRepo<T, R = void> {
+    // (undocumented)
+    load(t: string, args: any): Promise<Result<T>>;
+    // (undocumented)
+    save(t: T, args: any): Promise<Result<R>>;
+}
+
+// @public (undocumented)
+export interface Mapper<T, U> {
+    // (undocumented)
+    deserialize: (value: U) => T;
+    // (undocumented)
+    serialize: (domain: T) => U;
+}
+
+// @public (undocumented)
+export const repos: {
+    S3Repo: typeof S3Repo;
+    DynamoRepo: typeof DynamoRepo;
+};
+
+// @public (undocumented)
+export class Result<T> {
+    // (undocumented)
+    static combine(results: Array<Result<any>>): Result<any>;
+    // (undocumented)
+    error: Error;
+    // (undocumented)
+    static fail<U>(error: Error): Result<U>;
+    // (undocumented)
+    getValue(): T;
+    // (undocumented)
+    isFailure: boolean;
+    // (undocumented)
+    isSuccess: boolean;
+    // (undocumented)
+    static ok<U>(value?: U): Result<U>;
+    // Warning: (ae-forgotten-export) The symbol "SerializedResult" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    toJson(): SerializedResult<T>;
+    }
+
+// @public (undocumented)
+export const services: {
+    UrlService: typeof UrlService;
+};
+
+// @public (undocumented)
+export const useCases: {
+    FaastUseCase: typeof FaastUseCase;
+};
+
+// Warning: (ae-forgotten-export) The symbol "ValueObjectProps" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export abstract class ValueObject<T extends ValueObjectProps> {
+    constructor(props: T);
+    // (undocumented)
+    equals(vo?: ValueObject<T>): boolean;
+    // (undocumented)
+    protected readonly props: T;
+    // (undocumented)
+    protected static toObject<T, U>(Construct: (U: any) => T | Result<T>, object: U, objectName: string): Result<T>;
+    // (undocumented)
+    protected static toObjects<T>(Construct: (any: any) => T, objects: object[], objectName: string): Result<T[]>;
+    // (undocumented)
+    protected static toResultNumber(input: number, name: string): Result<number>;
+    // (undocumented)
+    protected static toResultString(string: string, name: string): Result<string>;
+    // (undocumented)
+    protected static toResultStringMap(data: any, name: string): Result<Map<string, string>>;
+    // (undocumented)
+    protected static toResultStrings(strings: string[], name: string): Result<string[]>;
+}
+
+
+// Warnings were encountered during analysis:
+//
+// src/index.ts:13:19 - (ae-forgotten-export) The symbol "S3Repo" needs to be exported by the entry point index.d.ts
+// src/index.ts:13:19 - (ae-forgotten-export) The symbol "DynamoRepo" needs to be exported by the entry point index.d.ts
+// src/index.ts:18:22 - (ae-forgotten-export) The symbol "FaastUseCase" needs to be exported by the entry point index.d.ts
+// src/index.ts:22:22 - (ae-forgotten-export) The symbol "UrlService" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
