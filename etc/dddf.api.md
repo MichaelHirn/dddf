@@ -27,6 +27,34 @@ export abstract class Entity<T> {
 }
 
 // @public (undocumented)
+export abstract class FaastUseCase<T extends object, U, V = void> {
+    protected constructor(config: IFaastUseCaseConfig<T>);
+    // (undocumented)
+    readonly environment: IFaastUseCaseConfig<T>['environment'];
+    // Warning: (ae-forgotten-export) The symbol "ArgumentTypes" needs to be exported by the entry point index.d.ts
+    exec(stream: ArgumentTypes<FaastUseCase<T, U, V>['main']>[0], config?: ArgumentTypes<FaastUseCase<T, U, V>['main']>[1]): Promise<Result<V>>;
+    // (undocumented)
+    abstract main(stream: Rx.Observable<U>, config: any): Promise<Result<V>>;
+    // (undocumented)
+    model(): Promise<FaastModel<T>>;
+    // Warning: (ae-forgotten-export) The symbol "FaastModel" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    protected _model: FaastModel<T>;
+    setupModel(): Promise<FaastModel<T>>;
+}
+
+// @public (undocumented)
+export interface IFaastUseCaseConfig<T extends object> {
+    // (undocumented)
+    environment: 'local' | 'aws';
+    // (undocumented)
+    functions: T;
+    // (undocumented)
+    params: Faast.CommonOptions | Faast.AwsOptions;
+}
+
+// @public (undocumented)
 export interface IRepo<T extends Entity<any>, R = void> {
     // (undocumented)
     load(t: string, args: any): Promise<Result<T>>;
@@ -46,6 +74,7 @@ export interface Mapper<T, U> {
 export const repos: {
     S3Repo: typeof S3Repo;
     DynamoRepo: typeof DynamoRepo;
+    CacheRepo: typeof CacheRepo;
 };
 
 // @public (undocumented)
@@ -75,11 +104,6 @@ export const services: {
     UrlService: typeof UrlService;
 };
 
-// @public (undocumented)
-export const useCases: {
-    FaastUseCase: typeof FaastUseCase;
-};
-
 // Warning: (ae-forgotten-export) The symbol "ValueObjectProps" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
@@ -106,10 +130,10 @@ export abstract class ValueObject<T extends ValueObjectProps> {
 
 // Warnings were encountered during analysis:
 //
-// src/index.ts:13:19 - (ae-forgotten-export) The symbol "S3Repo" needs to be exported by the entry point index.d.ts
-// src/index.ts:13:19 - (ae-forgotten-export) The symbol "DynamoRepo" needs to be exported by the entry point index.d.ts
-// src/index.ts:18:22 - (ae-forgotten-export) The symbol "FaastUseCase" needs to be exported by the entry point index.d.ts
-// src/index.ts:22:22 - (ae-forgotten-export) The symbol "UrlService" needs to be exported by the entry point index.d.ts
+// src/index.ts:14:19 - (ae-forgotten-export) The symbol "S3Repo" needs to be exported by the entry point index.d.ts
+// src/index.ts:14:19 - (ae-forgotten-export) The symbol "DynamoRepo" needs to be exported by the entry point index.d.ts
+// src/index.ts:14:19 - (ae-forgotten-export) The symbol "CacheRepo" needs to be exported by the entry point index.d.ts
+// src/index.ts:20:22 - (ae-forgotten-export) The symbol "UrlService" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

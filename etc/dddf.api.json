@@ -258,6 +258,563 @@
           "implementsTokenRanges": []
         },
         {
+          "kind": "Class",
+          "canonicalReference": "dddf!FaastUseCase:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare abstract class FaastUseCase<T extends "
+            },
+            {
+              "kind": "Content",
+              "text": "object"
+            },
+            {
+              "kind": "Content",
+              "text": ", U, V = "
+            },
+            {
+              "kind": "Content",
+              "text": "void"
+            },
+            {
+              "kind": "Content",
+              "text": "> "
+            }
+          ],
+          "releaseTag": "Public",
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "U",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "V",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              }
+            }
+          ],
+          "name": "FaastUseCase",
+          "members": [
+            {
+              "kind": "Property",
+              "canonicalReference": "dddf!FaastUseCase#_model:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected _model: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "FaastModel",
+                  "canonicalReference": "dddf!~FaastModel:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "_model",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Constructor",
+              "canonicalReference": "dddf!FaastUseCase:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `FaastUseCase` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected constructor(config: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IFaastUseCaseConfig",
+                  "canonicalReference": "dddf!IFaastUseCaseConfig:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "config",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "dddf!FaastUseCase#environment:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly environment: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IFaastUseCaseConfig",
+                  "canonicalReference": "dddf!IFaastUseCaseConfig:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>['environment']"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "environment",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "dddf!FaastUseCase#exec:member(1)",
+              "docComment": "/**\n * Provide execution environment for {@link FaastUseCase.main}.\n *\n * @remarks\n *\n * When inherited, do not overwrite this method. Instead implement logic in {@link FaastUseCase.main}.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "exec(stream: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ArgumentTypes",
+                  "canonicalReference": "dddf!~ArgumentTypes:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "FaastUseCase",
+                  "canonicalReference": "dddf!FaastUseCase:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T, U, V>['main']>[0]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", config?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ArgumentTypes",
+                  "canonicalReference": "dddf!~ArgumentTypes:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "FaastUseCase",
+                  "canonicalReference": "dddf!FaastUseCase:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T, U, V>['main']>[1]"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Result",
+                  "canonicalReference": "dddf!Result:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<V>>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 11,
+                "endIndex": 15
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "stream",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 5
+                  }
+                },
+                {
+                  "parameterName": "config",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 6,
+                    "endIndex": 10
+                  }
+                }
+              ],
+              "name": "exec"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "dddf!FaastUseCase#main:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "abstract main(stream: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "Rx."
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Observable",
+                  "canonicalReference": "rxjs!Observable:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<U>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", config: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Result",
+                  "canonicalReference": "dddf!Result:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<V>>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 7,
+                "endIndex": 11
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "stream",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 4
+                  }
+                },
+                {
+                  "parameterName": "config",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 5,
+                    "endIndex": 6
+                  }
+                }
+              ],
+              "name": "main"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "dddf!FaastUseCase#model:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "model(): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "FaastModel",
+                  "canonicalReference": "dddf!~FaastModel:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "model"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "dddf!FaastUseCase#setupModel:member(1)",
+              "docComment": "/**\n * Create the Faast instance.\n *\n * @remarks\n *\n * This is asynchronous as it may have to generate artifacts and upload to cloud provider behind the scenes.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "setupModel(): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "FaastModel",
+                  "canonicalReference": "dddf!~FaastModel:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "setupModel"
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "dddf!IFaastUseCaseConfig:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface IFaastUseCaseConfig<T extends "
+            },
+            {
+              "kind": "Content",
+              "text": "object"
+            },
+            {
+              "kind": "Content",
+              "text": "> "
+            }
+          ],
+          "releaseTag": "Public",
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "IFaastUseCaseConfig",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "dddf!IFaastUseCaseConfig#environment:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "environment: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "'local' | 'aws'"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "environment",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "dddf!IFaastUseCaseConfig#functions:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "functions: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "functions",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "dddf!IFaastUseCaseConfig#params:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "params: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "Faast."
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CommonOptions",
+                  "canonicalReference": "faastjs!CommonOptions:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": " | Faast."
+                },
+                {
+                  "kind": "Reference",
+                  "text": "AwsOptions",
+                  "canonicalReference": "faastjs!AwsOptions:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "params",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
           "kind": "Interface",
           "canonicalReference": "dddf!IRepo:interface",
           "docComment": "",
@@ -581,6 +1138,15 @@
             },
             {
               "kind": "Content",
+              "text": ";\n    CacheRepo: typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "CacheRepo",
+              "canonicalReference": "dddf!CacheRepo:class"
+            },
+            {
+              "kind": "Content",
               "text": ";\n}"
             }
           ],
@@ -588,7 +1154,7 @@
           "name": "repos",
           "variableTypeTokenRange": {
             "startIndex": 1,
-            "endIndex": 6
+            "endIndex": 8
           }
         },
         {
@@ -973,36 +1539,6 @@
           ],
           "releaseTag": "Public",
           "name": "services",
-          "variableTypeTokenRange": {
-            "startIndex": 1,
-            "endIndex": 4
-          }
-        },
-        {
-          "kind": "Variable",
-          "canonicalReference": "dddf!useCases:var",
-          "docComment": "",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "useCases: "
-            },
-            {
-              "kind": "Content",
-              "text": "{\n    FaastUseCase: typeof "
-            },
-            {
-              "kind": "Reference",
-              "text": "FaastUseCase",
-              "canonicalReference": "dddf!FaastUseCase:class"
-            },
-            {
-              "kind": "Content",
-              "text": ";\n}"
-            }
-          ],
-          "releaseTag": "Public",
-          "name": "useCases",
           "variableTypeTokenRange": {
             "startIndex": 1,
             "endIndex": 4
