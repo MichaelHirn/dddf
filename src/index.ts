@@ -1,9 +1,9 @@
 import { CacheRepo } from './repos/cache.repo'
 import { DynamoRepo } from './repos/dynamo.repo'
-import { FaastUseCase } from './useCases/faast.useCase'
 import { S3Repo } from './repos/s3.repo'
 import { UrlService } from './services/url.service'
 
+export { FaastUseCase, IFaastUseCaseConfig } from './useCases/faast'
 export { AggregateRoot } from './aggregate'
 export { Entity } from './entity'
 export { Mapper } from './mapper'
@@ -15,10 +15,6 @@ export const repos = {
   S3Repo,
   DynamoRepo,
   CacheRepo
-}
-
-export const useCases = {
-  FaastUseCase
 }
 
 export const services = {
