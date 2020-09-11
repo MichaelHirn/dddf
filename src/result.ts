@@ -26,9 +26,9 @@ export class Result<T> {
     Object.freeze(this)
   }
 
-  public getValue (): T {
+  public unwrap (): T {
     if (!this.isSuccess) {
-      this.error.message = `.getValue() on Error: ${this.error.message}`
+      this.error.message = `.unwrap() on Error: ${this.error.message}`
       throw this.error
     }
 

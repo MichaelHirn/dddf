@@ -36,7 +36,7 @@ export class CacheRepo<T extends Entity<any>> implements IRepo<T> {
     }
     const dataLoadResult = await this.dataRepo.load(key, config.dataRepo)
     if (dataLoadResult.isSuccess) {
-      await this.cacheRepo.save(dataLoadResult.getValue(), {})
+      await this.cacheRepo.save(dataLoadResult.unwrap(), {})
     }
     return dataLoadResult
   }
