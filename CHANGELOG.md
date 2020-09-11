@@ -1,3 +1,10 @@
+## [1.2.0](https://github.com/MichaelHirn/dddf/compare/v1.1.0...v1.2.0) (2020-09-11)
+
+
+### Features
+
+* add faast useCase ([7ed7221](https://github.com/MichaelHirn/dddf/commit/7ed722122e0686aec89f8fe3b497768aa1404e36))
+
 ## [1.1.0](https://github.com/MichaelHirn/dddf/compare/v1.0.0...v1.1.0) (2020-09-10)
 
 
