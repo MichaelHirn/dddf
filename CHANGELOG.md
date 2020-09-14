@@ -1,3 +1,10 @@
+### [1.4.1](https://github.com/MichaelHirn/dddf/compare/v1.4.0...v1.4.1) (2020-09-14)
+
+
+### Bug Fixes
+
+* **dynamo:** improve implementation abstraction ([398ccbd](https://github.com/MichaelHirn/dddf/commit/398ccbde18e5e7438b0443cc60c98e7dc92a557d))
+
 ## [1.4.0](https://github.com/MichaelHirn/dddf/compare/v1.3.0...v1.4.0) (2020-09-14)
 
 
