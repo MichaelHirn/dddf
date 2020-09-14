@@ -1,3 +1,10 @@
+## [1.5.0](https://github.com/MichaelHirn/dddf/compare/v1.4.1...v1.5.0) (2020-09-14)
+
+
+### Features
+
+* simplify and complete export ([4957593](https://github.com/MichaelHirn/dddf/commit/49575939a9744b61497a91a44404d04f9d6d72f0))
+
 ### [1.4.1](https://github.com/MichaelHirn/dddf/compare/v1.4.0...v1.4.1) (2020-09-14)
 
 
