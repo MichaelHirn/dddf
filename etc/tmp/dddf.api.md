@@ -86,8 +86,6 @@ export class Result<T> {
     // (undocumented)
     static fail<U>(error: Error): Result<U>;
     // (undocumented)
-    getValue(): T;
-    // (undocumented)
     isFailure: boolean;
     // (undocumented)
     isSuccess: boolean;
@@ -97,6 +95,8 @@ export class Result<T> {
     //
     // (undocumented)
     toJson(): SerializedResult<T>;
+    // (undocumented)
+    unwrap(): T;
     }
 
 // @public (undocumented)

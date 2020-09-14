@@ -37,8 +37,8 @@ export abstract class DynamoRepo<T extends Entity<any>, U extends IDynamoRepoCon
   public async load (key: string): Promise<Result<T>> {
     const batchResult = await this.loadBatch([key])
     if (batchResult.isSuccess) {
-      if (batchResult.getValue().has(key)) {
-        return batchResult.getValue().get(key)
+      if (batchResult.unwrap().has(key)) {
+        return batchResult.unwrap().get(key)
       }
       return Result.fail(new Error(`failed to load ${key}`))
     }

@@ -1337,34 +1337,6 @@
               "name": "fail"
             },
             {
-              "kind": "Method",
-              "canonicalReference": "dddf!Result#getValue:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "getValue(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "T"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [],
-              "name": "getValue"
-            },
-            {
               "kind": "Property",
               "canonicalReference": "dddf!Result#isFailure:member",
               "docComment": "",
@@ -1510,6 +1482,34 @@
               "overloadIndex": 1,
               "parameters": [],
               "name": "toJson"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "dddf!Result#unwrap:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "unwrap(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "unwrap"
             }
           ],
           "implementsTokenRanges": []

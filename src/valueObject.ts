@@ -29,7 +29,7 @@ export abstract class ValueObject<T extends ValueObjectProps> {
       const constructorResult = Construct(object)
       if (constructorResult instanceof Result) {
         if (constructorResult.isSuccess) {
-          return Result.ok<T>(constructorResult.getValue())
+          return Result.ok<T>(constructorResult.unwrap())
         }
         return Result.fail<T>(constructorResult.error)
       }
