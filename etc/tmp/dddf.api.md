@@ -13,6 +13,73 @@ import * as Rx from 'rxjs';
 export abstract class AggregateRoot<T> extends Entity<T> {
 }
 
+// @alpha
+export class CacheRepo<T extends Entity<any>> implements IRepo<T> {
+    constructor(config: ICacheRepoConfig<T>);
+    // (undocumented)
+    protected readonly cacheRepo: IRepo<T>;
+    // (undocumented)
+    protected readonly dataRepo: IRepo<T>;
+    // (undocumented)
+    load(key: string, config: {
+        cacheRepo: any;
+        dataRepo: any;
+    }): Promise<Result<T>>;
+    // (undocumented)
+    save(domainObject: T, config: {
+        cacheRepo: any;
+        dataRepo: any;
+    }): Promise<Result<void>>;
+}
+
+// @public (undocumented)
+export abstract class DynamoRepo<T extends Entity<any>, U extends IDynamoRepoConfig = IDynamoRepoConfig> implements IRepo<T> {
+    constructor(config: U);
+    // (undocumented)
+    protected static addMissingKeys<T>(keys: string[], map: Map<string, Result<T>>): Map<string, Result<T>>;
+    // (undocumented)
+    protected db: AWS_2.DynamoDB;
+    // (undocumented)
+    abstract deserialize(dynamoItem: any): Result<T>;
+    // Warning: (ae-forgotten-export) The symbol "LoadBatchParams" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    generateLoadBatchParams(keys: string[]): LoadBatchParams;
+    // Warning: (ae-forgotten-export) The symbol "SaveBatcheParams" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    generateSaveBatchParams(objects: T[]): SaveBatcheParams;
+    // Warning: (ae-forgotten-export) The symbol "ScanParams" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    protected generateScanParams(scanParams: Partial<ScanParams>): ScanParams;
+    // (undocumented)
+    load(key: string): Promise<Result<T>>;
+    // (undocumented)
+    loadAll(concurrency?: number): Rx.Observable<T>;
+    // (undocumented)
+    loadBatch(keys: string[]): Promise<Result<Map<string, Result<T>>>>;
+    // (undocumented)
+    model: AWS_2.DynamoDB.DocumentClient;
+    // Warning: (ae-forgotten-export) The symbol "ParallelScanResponse" needs to be exported by the entry point index.d.ts
+    _parallelScan(concurrency: number, scanParams?: Partial<ScanParams>): Rx.Observable<ParallelScanResponse>;
+    // (undocumented)
+    save(object: T): Promise<Result<void>>;
+    // (undocumented)
+    saveBatch(objects: T[]): Promise<Result<void>>;
+    // (undocumented)
+    scan(startKey?: {
+        [index: string]: string | number;
+    }): Promise<Result<T[]>>;
+    // (undocumented)
+    protected _scan(scanParams: Partial<ScanParams>): Rx.Observable<ParallelScanResponse>;
+    // (undocumented)
+    abstract serialize(object: T): Result<any>;
+    // (undocumented)
+    readonly tableName: string;
+    abstract toPrimaryKeyAttribute(input: any): object;
+}
+
 // @public (undocumented)
 export abstract class Entity<T> {
     constructor(props: T, id: string);
@@ -45,6 +112,20 @@ export abstract class FaastUseCase<T extends object, U, V = void> {
 }
 
 // @public (undocumented)
+export interface ICacheRepoConfig<T extends Entity<any>> {
+    cacheRepo: IRepo<T>;
+    dataRepo: IRepo<T>;
+}
+
+// @public (undocumented)
+export interface IDynamoRepoConfig {
+    // (undocumented)
+    model: AWS_2.DynamoDB;
+    // (undocumented)
+    tableName: string;
+}
+
+// @public (undocumented)
 export interface IFaastUseCaseConfig<T extends object> {
     // (undocumented)
     environment: 'local' | 'aws';
@@ -63,19 +144,19 @@ export interface IRepo<T extends Entity<any>, R = void> {
 }
 
 // @public (undocumented)
+export interface IS3RepoConfig {
+    bucketName: string;
+    model: AWS_2.S3;
+    objectPrefix?: string;
+}
+
+// @public (undocumented)
 export interface Mapper<T, U> {
     // (undocumented)
     deserialize: (value: U) => T;
     // (undocumented)
     serialize: (domain: T) => U;
 }
-
-// @public (undocumented)
-export const repos: {
-    S3Repo: typeof S3Repo;
-    DynamoRepo: typeof DynamoRepo;
-    CacheRepo: typeof CacheRepo;
-};
 
 // @public (undocumented)
 export class Result<T> {
@@ -100,9 +181,78 @@ export class Result<T> {
     }
 
 // @public (undocumented)
-export const services: {
-    UrlService: typeof UrlService;
-};
+export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoConfig = IS3RepoConfig> implements IRepo<T, R> {
+    constructor(config: U);
+    // (undocumented)
+    protected static addMissingKeys<T>(keys: string[], map: Map<string, Result<T>>): Map<string, Result<T>>;
+    // (undocumented)
+    readonly bucketName: string;
+    // Warning: (ae-forgotten-export) The symbol "ListObjectsParams" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    protected getListParams(params?: Partial<ListObjectsParams>): ListObjectsParams;
+    // Warning: (ae-forgotten-export) The symbol "ListVersionsParams" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    protected getListVersionsParams(params?: Partial<ListVersionsParams>): Result<ListVersionsParams>;
+    // Warning: (ae-forgotten-export) The symbol "LoadParams" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    protected getLoadParams(key: string, params?: Partial<LoadParams>): Result<LoadParams>;
+    // Warning: (ae-forgotten-export) The symbol "LoadResponse" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    protected getObject(key: string, partialParams?: Partial<LoadParams>): Promise<Result<LoadResponse>>;
+    // Warning: (ae-forgotten-export) The symbol "ListVersionsResponse" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    getObjectVersions(key: string): Promise<ListVersionsResponse['Versions']>;
+    // Warning: (ae-forgotten-export) The symbol "SaveParams" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    protected getSaveParams(key: string, body: string, params?: Partial<SaveParams>): Result<SaveParams>;
+    // (undocumented)
+    listAllObjectKeys(partialParams?: Partial<ListObjectsParams>): Rx.Observable<string>;
+    // Warning: (ae-forgotten-export) The symbol "ListObjectsResponse" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    listAllObjects(partialParams?: Partial<ListObjectsParams>): Rx.Observable<ListObjectsResponse['Contents'][0]>;
+    // (undocumented)
+    listAllObjectVersions(partialParams?: Partial<ListVersionsParams>): Rx.Observable<ListVersionsResponse['Versions'][0]>;
+    // (undocumented)
+    listObjects(partialParams?: Partial<ListObjectsParams>): Promise<Result<ListObjectsResponse>>;
+    // (undocumented)
+    listObjectVersions(partialParams: Partial<ListVersionsParams>): Promise<Result<ListVersionsResponse>>;
+    // (undocumented)
+    abstract load(key: string, partialParams: Partial<LoadParams>): Promise<Result<T>>;
+    // (undocumented)
+    loadAll(): Rx.Observable<T>;
+    // (undocumented)
+    loadBatch(keys: string[], partialParams?: Partial<LoadParams>): Promise<Result<Map<string, Result<T>>>>;
+    // (undocumented)
+    model: AWS_2.S3;
+    // (undocumented)
+    readonly objectPrefix: string;
+    // Warning: (ae-forgotten-export) The symbol "SaveResponse" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    protected putObject(key: string, body: string, partialParams?: Partial<SaveParams>): Promise<Result<SaveResponse>>;
+    // (undocumented)
+    abstract save(object: T, partialParams: Partial<SaveParams>): Promise<Result<R>>;
+    // (undocumented)
+    saveBatch(objects: T[], partialParams?: Partial<SaveParams>): Promise<Result<R>>;
+}
+
+// @public
+export class UrlService {
+    static isDomain(domain: string): boolean;
+    static isListedDomain(domain: string): boolean;
+    static isUrl(url: string): boolean;
+    // (undocumented)
+    static toDomain(url: string): ReturnType<typeof parseDomain>;
+    // (undocumented)
+    static toUrl(url: string): URL;
+}
 
 // Warning: (ae-forgotten-export) The symbol "ValueObjectProps" needs to be exported by the entry point index.d.ts
 //
@@ -127,13 +277,6 @@ export abstract class ValueObject<T extends ValueObjectProps> {
     protected static toResultStrings(strings: string[], name: string): Result<string[]>;
 }
 
-
-// Warnings were encountered during analysis:
-//
-// src/index.ts:14:19 - (ae-forgotten-export) The symbol "S3Repo" needs to be exported by the entry point index.d.ts
-// src/index.ts:14:19 - (ae-forgotten-export) The symbol "DynamoRepo" needs to be exported by the entry point index.d.ts
-// src/index.ts:14:19 - (ae-forgotten-export) The symbol "CacheRepo" needs to be exported by the entry point index.d.ts
-// src/index.ts:20:22 - (ae-forgotten-export) The symbol "UrlService" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

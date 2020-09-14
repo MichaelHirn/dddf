@@ -167,7 +167,7 @@ export abstract class DynamoRepo<T extends Entity<any>, U extends IDynamoRepoCon
    *
    * @remarks
    *
-   * To continue a parallel scan use {@link ProfileAggregateDynamoRepo._scan}.
+   * To continue a parallel scan use {@link DynamoRepo._scan}.
    *
    */
   public _parallelScan (concurrency: number, scanParams: Partial<ScanParams> = {}): Rx.Observable<ParallelScanResponse> {
