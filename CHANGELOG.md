@@ -1,3 +1,10 @@
+## [1.4.0](https://github.com/MichaelHirn/dddf/compare/v1.3.0...v1.4.0) (2020-09-14)
+
+
+### Features
+
+* **dynamo:** extend dynamo functionality ([998fe96](https://github.com/MichaelHirn/dddf/commit/998fe96dfd780fef8ba7816b4bdcb871664755b2))
+
 ## [1.3.0](https://github.com/MichaelHirn/dddf/compare/v1.2.0...v1.3.0) (2020-09-14)
 
 
