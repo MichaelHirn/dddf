@@ -35,11 +35,57 @@ export abstract class DynamoRepo<T extends Entity<any>, U extends IDynamoRepoCon
     })
   }
 
+  public abstract serialize (object: T): Result<any>
+
   public abstract deserialize (dynamoItem: any): Result<T>
 
-  public abstract generateSaveBatchParams (objects: T[]): SaveBatcheParams
+  /**
+   * A single primary key attribute values that define specific items in the table.
+   *
+   * @remarks
+   *
+   * For each primary key, you must provide all of the key attributes. For example, with a simple primary key,
+   * you only need to provide the partition key value. For a composite key, you must provide both the partition
+   * key value and the sort key value.
+   *
+   * @example
+   *
+   * ```typescript
+   * public toPrimaryKeyAttribute (input: string): object {
+   *    return { singlePrimaryKey: input }
+   * }
+   * ```
+   *
+   * or
+   *
+   * ```typescript
+   * public toPrimaryKeyAttribute (input: {partitionKey: string, sortKey: number}): object {
+   *    return { id: partitionKey, exampleField: sortKey }
+   * }
+   * ```
+   *
+   */
+  public abstract toPrimaryKeyAttribute (input: any): object
 
-  public abstract generateLoadBatchParams (keys: string[]): LoadBatchParams
+  public generateSaveBatchParams (objects: T[]): SaveBatcheParams {
+    const param: SaveBatcheParams = { RequestItems: {} }
+    param.RequestItems[this.tableName] = objects.map(object => {
+      return {
+        PutRequest: {
+          Item: this.serialize(object)
+        }
+      }
+    })
+    return param
+  }
+
+  public generateLoadBatchParams (keys: string[]): LoadBatchParams {
+    const param: LoadBatchParams = { RequestItems: {} }
+    param.RequestItems[this.tableName] = {
+      Keys: keys.map(key => this.toPrimaryKeyAttribute(key))
+    }
+    return param
+  }
 
   protected generateScanParams (scanParams: Partial<ScanParams>): ScanParams {
     return Object.assign(scanParams, { TableName: this.tableName })
