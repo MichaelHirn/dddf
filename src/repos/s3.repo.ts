@@ -5,8 +5,10 @@ import { Entity } from '../entity'
 import { IRepo } from '../repo'
 import { Result } from '../result'
 
-export type ListResponse = AWS.S3.ListObjectsV2Output
-export type ListParams = AWS.S3.ListObjectsV2Request
+export type ListObjectsResponse = AWS.S3.ListObjectsV2Output
+export type ListObjectsParams = AWS.S3.ListObjectsV2Request
+export type ListVersionsResponse = AWS.S3.ListObjectVersionsOutput
+export type ListVersionsParams = AWS.S3.ListObjectVersionsRequest
 export type LoadResponse = AWS.S3.GetObjectOutput
 export type LoadParams = AWS.S3.GetObjectRequest
 export type SaveResponse = AWS.S3.PutObjectOutput
@@ -52,7 +54,7 @@ export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoC
     this.objectPrefix = config.objectPrefix
   }
 
-  protected getListParams (params: Partial<ListParams> = {}): ListParams {
+  protected getListParams (params: Partial<ListObjectsParams> = {}): ListObjectsParams {
     return {
       MaxKeys: 1000,
       ...params,
@@ -72,6 +74,16 @@ export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoC
       return Result.ok(Object.assign(params, { Body: body, Key: key, Bucket: this.bucketName }))
     }
     return Result.fail(new Error(`invalid key: "${key}" does not match with prefix "${this.objectPrefix}"`))
+  }
+
+  protected getListVersionsParams (params: Partial<ListVersionsParams> = {}): Result<ListVersionsParams> {
+    if (typeof params.Prefix === 'undefined') {
+      params.Prefix = this.objectPrefix
+    }
+    if (params.Prefix.startsWith(this.objectPrefix)) {
+      return Result.ok({ MaxKeys: 1000, ...params, ...{Bucket: this.bucketName} })
+    }
+    return Result.fail(new Error(`invalid Prefix: ${params.Prefix} does not match with prefix ${this.objectPrefix}`))
   }
 
   public abstract async load (key: string, partialParams: Partial<LoadParams>): Promise<Result<T>>
@@ -117,15 +129,64 @@ export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoC
     ).toPromise()
   }
 
-  public listAllObjectKeys (partialParams: Partial<ListParams> = {}): Rx.Observable<string> {
+  public async getObjectVersions (key: string): Promise<ListVersionsResponse['Versions']> {
+    return await this.listAllObjectVersions({ Prefix: key }).pipe(
+      RxOps.filter(versionObject => {
+        return versionObject.Key === key
+      }),
+      RxOps.toArray()
+    ).toPromise()
+  }
+
+  public listAllObjectVersions (partialParams: Partial<ListVersionsParams> = {}): Rx.Observable<ListVersionsResponse['Versions'][0]> {
+    return Rx.defer(async () => {
+      return await this.listObjectVersions(this.getListVersionsParams(partialParams).unwrap())
+    }).pipe(
+      RxOps.expand(response => {
+        if (response.isSuccess && response.unwrap().IsTruncated) {
+          const params = this.getListParams(Object.assign(
+            partialParams,
+            {
+              KeyMarker: response.unwrap().NextKeyMarker,
+              VersionIdMarker: response.unwrap().NextVersionIdMarker
+            }
+          ))
+          return Rx.defer(async () => await this.listObjectVersions(params))
+        }
+        return Rx.EMPTY
+      }),
+      RxOps.mergeMap(response => {
+        if (response.isSuccess) {
+          return Rx.from(response.unwrap().Versions)
+        }
+        return Rx.from([])
+      })
+    )
+  }
+
+  public async listObjectVersions (
+    partialParams: Partial<ListVersionsParams>
+  ): Promise<Result<ListVersionsResponse>> {
+    try {
+      const paramsResult = this.getListVersionsParams(partialParams)
+      if (paramsResult.isSuccess) {
+        return Result.ok(await this.model.listObjectVersions(paramsResult.unwrap()).promise())
+      }
+      return paramsResult
+    } catch (e) {
+      return Result.fail(e)
+    }
+  }
+
+  public listAllObjectKeys (partialParams: Partial<ListObjectsParams> = {}): Rx.Observable<string> {
     return this.listAllObjects(partialParams).pipe(
       RxOps.map(object => object.Key)
     )
   }
 
-  public listAllObjects (partialParams: Partial<ListParams> = {}): Rx.Observable<ListResponse['Contents'][0]> {
+  public listAllObjects (partialParams: Partial<ListObjectsParams> = {}): Rx.Observable<ListObjectsResponse['Contents'][0]> {
     return Rx.defer(async () => await this.listObjects(this.getListParams(partialParams))).pipe(
-      RxOps.expand((response: Result<ListResponse>) => {
+      RxOps.expand(response => {
         if (response.isSuccess && response.unwrap().IsTruncated) {
           const params = this.getListParams(Object.assign(
             partialParams,
@@ -135,7 +196,7 @@ export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoC
         }
         return Rx.EMPTY
       }),
-      RxOps.mergeMap((response: Result<ListResponse>) => {
+      RxOps.mergeMap(response => {
         if (response.isSuccess) {
           return Rx.from(response.unwrap().Contents)
         }
@@ -144,7 +205,7 @@ export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoC
     )
   }
 
-  public async listObjects (partialParams: Partial<ListParams> = {}): Promise<Result<ListResponse>> {
+  public async listObjects (partialParams: Partial<ListObjectsParams> = {}): Promise<Result<ListObjectsResponse>> {
     try {
       const params = this.getListParams(partialParams)
       return Result.ok(await this.model.listObjectsV2(params).promise())
