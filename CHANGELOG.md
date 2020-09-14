@@ -1,3 +1,15 @@
+## [1.3.0](https://github.com/MichaelHirn/dddf/compare/v1.2.0...v1.3.0) (2020-09-14)
+
+
+### Features
+
+* **s3:** add object versioning support ([6686b0f](https://github.com/MichaelHirn/dddf/commit/6686b0f6efce34789e8285b1e83e10e8f5bfc33f))
+
+
+### Bug Fixes
+
+* **s3:** fix objectPrefix internals ([94f0210](https://github.com/MichaelHirn/dddf/commit/94f0210275f10aedae594a4673c78d1ba81099d1))
+
 ## [1.2.0](https://github.com/MichaelHirn/dddf/compare/v1.1.0...v1.2.0) (2020-09-11)
 
 
