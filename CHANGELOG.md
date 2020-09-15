@@ -1,3 +1,10 @@
+### [1.6.1](https://github.com/MichaelHirn/dddf/compare/v1.6.0...v1.6.1) (2020-09-15)
+
+
+### Bug Fixes
+
+* **dynamo:** fix (de)serialize result handling ([728c635](https://github.com/MichaelHirn/dddf/commit/728c635d3383d99497ed0228fa295b9fa674f263))
+
 ## [1.6.0](https://github.com/MichaelHirn/dddf/compare/v1.5.0...v1.6.0) (2020-09-15)
 
 
