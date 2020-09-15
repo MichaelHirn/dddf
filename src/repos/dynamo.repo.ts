@@ -74,7 +74,7 @@ export abstract class DynamoRepo<T extends Entity<any>, U extends IDynamoRepoCon
     param.RequestItems[this.tableName] = objects.map(object => {
       return {
         PutRequest: {
-          Item: this.serialize(object)
+          Item: this.serialize(object).unwrap()
         }
       }
     })
@@ -132,7 +132,7 @@ export abstract class DynamoRepo<T extends Entity<any>, U extends IDynamoRepoCon
       const map = (responseItems as any).reduce((profiles, responseObject: any) => {
         profiles.set(
           responseObject.entityUrn,
-          this.deserialize(responseObject)
+          this.deserialize(responseObject).unwrap()
         )
         return profiles
       }, new Map<string, Result<T>>())
