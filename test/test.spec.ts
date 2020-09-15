@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import * as ddd from '../src'
 
 test('hello with correct name', () => {

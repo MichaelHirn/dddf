@@ -3,6 +3,7 @@
         "module": "commonjs",
         "target": "es6",
         "moduleResolution": "node",
+        "incremental": true,
         "forceConsistentCasingInFileNames": true,
         "noImplicitAny": false,
         "declaration": true,
@@ -10,6 +11,8 @@
         "declarationMap": true,
         "esModuleInterop": true,
         "preserveConstEnums": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
         "sourceMap": true,
         "outDir": "./dist"
     },
