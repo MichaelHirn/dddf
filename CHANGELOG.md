@@ -1,3 +1,10 @@
+## [1.6.0](https://github.com/MichaelHirn/dddf/compare/v1.5.0...v1.6.0) (2020-09-15)
+
+
+### Features
+
+* add inversify.js support ([89212ac](https://github.com/MichaelHirn/dddf/commit/89212ac99ac2fb9d5a629dc6b3bbdc609e8aeac2))
+
 ## [1.5.0](https://github.com/MichaelHirn/dddf/compare/v1.4.1...v1.5.0) (2020-09-14)
 
 
