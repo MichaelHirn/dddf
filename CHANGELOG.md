@@ -1,3 +1,10 @@
+## [1.8.0](https://github.com/MichaelHirn/dddf/compare/v1.7.0...v1.8.0) (2020-09-15)
+
+
+### Features
+
+* **dynamo:** add delete support ([38cdd08](https://github.com/MichaelHirn/dddf/commit/38cdd08a01c189da93d4afdc809d29255f0f754a))
+
 ## [1.7.0](https://github.com/MichaelHirn/dddf/compare/v1.6.1...v1.7.0) (2020-09-15)
 
 
