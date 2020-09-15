@@ -45,6 +45,10 @@ export abstract class DynamoRepo<T extends Entity<any>, U extends IDynamoRepoCon
     //
     // (undocumented)
     generateLoadBatchParams(keys: string[]): LoadBatchParams;
+    // Warning: (ae-forgotten-export) The symbol "QueryParams" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    protected generateQueryParams(queryParams: Partial<QueryParams>): QueryParams;
     // Warning: (ae-forgotten-export) The symbol "SaveBatcheParams" needs to be exported by the entry point index.d.ts
     //
     // (undocumented)
@@ -63,6 +67,12 @@ export abstract class DynamoRepo<T extends Entity<any>, U extends IDynamoRepoCon
     model: AWS_2.DynamoDB.DocumentClient;
     // Warning: (ae-forgotten-export) The symbol "ParallelScanResponse" needs to be exported by the entry point index.d.ts
     _parallelScan(concurrency: number, scanParams?: Partial<ScanParams>): Rx.Observable<ParallelScanResponse>;
+    // (undocumented)
+    query(queryParams: Partial<QueryParams>): Rx.Observable<T>;
+    // Warning: (ae-forgotten-export) The symbol "ParallelQueryResponse" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    protected _query(queryParams: Partial<QueryParams>): Rx.Observable<ParallelQueryResponse>;
     // (undocumented)
     save(object: T): Promise<Result<void>>;
     // (undocumented)

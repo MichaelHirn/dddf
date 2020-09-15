@@ -14,6 +14,12 @@ interface ParallelScanResponse {
   scanResponse: ScanResponse
   params: Partial<ScanParams>
 }
+type QueryParams = AWS.DynamoDB.DocumentClient.QueryInput
+type QueryResponse = AWS.DynamoDB.DocumentClient.QueryOutput
+interface ParallelQueryResponse {
+  queryResponse: QueryResponse
+  params: Partial<QueryParams>
+}
 
 export interface IDynamoRepoConfig {
   model: AWS.DynamoDB
@@ -91,6 +97,10 @@ export abstract class DynamoRepo<T extends Entity<any>, U extends IDynamoRepoCon
 
   protected generateScanParams (scanParams: Partial<ScanParams>): ScanParams {
     return Object.assign(scanParams, { TableName: this.tableName })
+  }
+
+  protected generateQueryParams (queryParams: Partial<QueryParams>): QueryParams {
+    return Object.assign(queryParams, { TableName: this.tableName })
   }
 
   public async saveBatch (objects: T[]): Promise<Result<void>> {
@@ -205,6 +215,38 @@ export abstract class DynamoRepo<T extends Entity<any>, U extends IDynamoRepoCon
     } catch (e) {
       return Result.fail(e)
     }
+  }
+
+  public query (queryParams: Partial<QueryParams>): Rx.Observable<T> {
+    return this._query(queryParams).pipe(
+      RxOps.expand((response: ParallelQueryResponse) => {
+        const { LastEvaluatedKey } = response.queryResponse
+        if (LastEvaluatedKey instanceof Object) {
+          return this._query({
+            ...response.params,
+            ExclusiveStartKey: LastEvaluatedKey
+          })
+        }
+        return Rx.EMPTY
+      }),
+      RxOps.mergeMap(response => {
+        const objects = response.queryResponse.Items.map((item: any) => {
+          return this.deserialize(item).unwrap()
+        })
+        return Rx.from(objects)
+      })
+    )
+  }
+
+  protected _query (queryParams: Partial<QueryParams>): Rx.Observable<ParallelQueryResponse> {
+    return Rx.defer(async () => {
+      const params = this.generateQueryParams(queryParams)
+      const result = await this.model.query(params).promise()
+      return {
+        queryResponse: result,
+        params
+      }
+    })
   }
 
   public async save (object: T): Promise<Result<void>> {
