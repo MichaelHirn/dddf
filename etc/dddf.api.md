@@ -40,7 +40,13 @@ export abstract class DynamoRepo<T extends Entity<any>, U extends IDynamoRepoCon
     // (undocumented)
     protected db: AWS_2.DynamoDB;
     // (undocumented)
+    delete(key: string): Promise<Result<void>>;
+    // (undocumented)
+    deleteBatch(keys: string[]): Promise<Result<void>>;
+    // (undocumented)
     abstract deserialize(dynamoItem: any): Result<T>;
+    // (undocumented)
+    generateDeleteBatchParams(keys: string[]): SaveBatcheParams;
     // Warning: (ae-forgotten-export) The symbol "LoadBatchParams" needs to be exported by the entry point index.d.ts
     //
     // (undocumented)

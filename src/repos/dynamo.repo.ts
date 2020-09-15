@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import * as AWS from 'aws-sdk'
 import * as Rx from 'rxjs'
 import * as RxOps from 'rxjs/operators'
@@ -87,6 +88,18 @@ export abstract class DynamoRepo<T extends Entity<any>, U extends IDynamoRepoCon
     return param
   }
 
+  public generateDeleteBatchParams (keys: string[]): SaveBatcheParams {
+    const param: SaveBatcheParams = { RequestItems: {} }
+    param.RequestItems[this.tableName] = keys.map(key => {
+      return {
+        DeleteRequest: {
+          Key: this.toPrimaryKeyAttribute(key)
+        }
+      }
+    })
+    return param
+  }
+
   public generateLoadBatchParams (keys: string[]): LoadBatchParams {
     const param: LoadBatchParams = { RequestItems: {} }
     param.RequestItems[this.tableName] = {
@@ -101,6 +114,28 @@ export abstract class DynamoRepo<T extends Entity<any>, U extends IDynamoRepoCon
 
   protected generateQueryParams (queryParams: Partial<QueryParams>): QueryParams {
     return Object.assign(queryParams, { TableName: this.tableName })
+  }
+
+  public async deleteBatch (keys: string[]): Promise<Result<void>> {
+    const results = await Rx.from(keys).pipe(
+      // we can have a maximum of 25 request items in a DynamoDB `batchWrite` request
+      RxOps.bufferCount(25),
+      RxOps.mergeMap(async (objectBatch) => {
+        try {
+          const params = this.generateDeleteBatchParams(objectBatch)
+          await this.model.batchWrite(params).promise()
+          return Result.ok<void>()
+        } catch (error) {
+          return Result.fail<void>(error)
+        }
+      }),
+      RxOps.toArray()
+    ).toPromise()
+    if (results.every(result => result.isSuccess)) {
+      return Result.ok()
+    }
+    const failedResults = results.filter(result => result.isFailure)
+    return Result.fail(failedResults[0].error)
   }
 
   public async saveBatch (objects: T[]): Promise<Result<void>> {
@@ -247,6 +282,10 @@ export abstract class DynamoRepo<T extends Entity<any>, U extends IDynamoRepoCon
         params
       }
     })
+  }
+
+  public async delete (key: string): Promise<Result<void>> {
+    return await this.deleteBatch([key])
   }
 
   public async save (object: T): Promise<Result<void>> {
