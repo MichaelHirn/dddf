@@ -1,3 +1,10 @@
+## [1.7.0](https://github.com/MichaelHirn/dddf/compare/v1.6.1...v1.7.0) (2020-09-15)
+
+
+### Features
+
+* **dynamo:** add query support ([126b968](https://github.com/MichaelHirn/dddf/commit/126b96830399e2abc45014479b25aec34e482479))
+
 ### [1.6.1](https://github.com/MichaelHirn/dddf/compare/v1.6.0...v1.6.1) (2020-09-15)
 
 
