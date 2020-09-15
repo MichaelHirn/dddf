@@ -1,6 +1,7 @@
 import * as AWS from 'aws-sdk'
 import * as Rx from 'rxjs'
 import * as RxOps from 'rxjs/operators'
+import { injectable, unmanaged } from 'inversify'
 import { Entity } from '../entity'
 import { IRepo } from '../repo'
 import { Result } from '../result'
@@ -43,12 +44,13 @@ export interface IS3RepoConfig {
   objectPrefix?: string
 }
 
+@injectable()
 export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoConfig = IS3RepoConfig> implements IRepo<T, R> {
   public readonly bucketName: string
   public model: AWS.S3
   public readonly objectPrefix: string = ''
 
-  constructor (config: U) {
+  constructor (@unmanaged() config: U) {
     this.bucketName = config.bucketName
     this.model = config.model
     this.objectPrefix = config.objectPrefix

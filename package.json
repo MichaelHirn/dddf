@@ -8,8 +8,10 @@
   "dependencies": {
     "aws-sdk": "^2.749.0",
     "faastjs": "^5.2.6",
+    "inversify": "^5.0.1",
     "object-hash": "^2.0.3",
     "parse-domain": "^3.0.2",
+    "reflect-metadata": "^0.1.13",
     "shallow-equal-object": "^1.1.1"
   },
   "devDependencies": {

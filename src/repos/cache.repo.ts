@@ -1,3 +1,4 @@
+import { injectable, unmanaged } from 'inversify'
 import { Entity } from '../entity'
 import { IRepo } from '../repo'
 import { Result } from '../result'
@@ -20,11 +21,12 @@ export interface ICacheRepoConfig<T extends Entity<any>> {
  *
  * @alpha
  */
+@injectable()
 export class CacheRepo<T extends Entity<any>> implements IRepo<T> {
   protected readonly cacheRepo: IRepo<T>
   protected readonly dataRepo: IRepo<T>
 
-  public constructor (config: ICacheRepoConfig<T>) {
+  public constructor (@unmanaged() config: ICacheRepoConfig<T>) {
     this.cacheRepo = config.cacheRepo
     this.dataRepo = config.dataRepo
   }
