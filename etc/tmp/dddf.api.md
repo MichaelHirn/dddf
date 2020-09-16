@@ -204,7 +204,7 @@ export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoC
     // (undocumented)
     readonly bucketName: string;
     // (undocumented)
-    abstract deserialize(data: any): Result<T>;
+    abstract deserialize(data: string): Result<T>;
     // Warning: (ae-forgotten-export) The symbol "ListObjectsParams" needs to be exported by the entry point index.d.ts
     //
     // (undocumented)
@@ -260,7 +260,7 @@ export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoC
     // (undocumented)
     saveBatch(objects: T[], partialParams?: Partial<SaveParams>): Promise<Result<R>>;
     // (undocumented)
-    abstract serialize(object: T): Result<any>;
+    abstract serialize(object: T): Result<string>;
 }
 
 // @public

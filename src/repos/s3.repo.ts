@@ -56,8 +56,8 @@ export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoC
     this.objectPrefix = config.objectPrefix
   }
 
-  public abstract deserialize (data: any): Result<T>
-  public abstract serialize (object: T): Result<any>
+  public abstract deserialize (data: string): Result<T>
+  public abstract serialize (object: T): Result<string>
 
   protected getListParams (params: Partial<ListObjectsParams> = {}): ListObjectsParams {
     return {
@@ -96,8 +96,7 @@ export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoC
       const responseResult = await this.getObject(key, partialParams)
       if (responseResult.isSuccess) {
         const response = responseResult.unwrap()
-        const body = JSON.parse((response.Body as Buffer).toString('utf8'))
-        const result = this.deserialize(body)
+        const result = this.deserialize((response.Body as Buffer).toString('utf8'))
         return result
       }
       return Result.fail(responseResult.error)
@@ -111,16 +110,7 @@ export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoC
       const key = object.id
       const serializedResult = this.serialize(object)
       if (serializedResult.isSuccess) {
-        const serialized = serializedResult.unwrap()
-        let fullySerialized = ''
-        if (serialized instanceof Object) {
-          fullySerialized = JSON.stringify(serialized)
-        } else if (typeof serialized === 'string') {
-          fullySerialized = serialized
-        } else {
-          throw new Error(`expected serialize to return string or object but found ${typeof serialized}`)
-        }
-        const responseResult = await this.putObject(key, fullySerialized, partialParams)
+        const responseResult = await this.putObject(key, serializedResult.unwrap(), partialParams)
         if (responseResult.isSuccess) {
           return Result.ok()
         }
