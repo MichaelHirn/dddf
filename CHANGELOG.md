@@ -1,3 +1,10 @@
+### [1.9.2](https://github.com/MichaelHirn/dddf/compare/v1.9.1...v1.9.2) (2020-09-16)
+
+
+### Bug Fixes
+
+* **s3:** provide defaults for save & load ([6c09aa2](https://github.com/MichaelHirn/dddf/commit/6c09aa23f5e44a2086e99f42d98218dff3a4fd3d))
+
 ### [1.9.1](https://github.com/MichaelHirn/dddf/compare/v1.9.0...v1.9.1) (2020-09-16)
 
 
