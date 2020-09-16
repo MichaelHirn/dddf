@@ -1,3 +1,10 @@
+## [1.9.0](https://github.com/MichaelHirn/dddf/compare/v1.8.0...v1.9.0) (2020-09-16)
+
+
+### Features
+
+* **s3:** improve implementation requirements ([2538be7](https://github.com/MichaelHirn/dddf/commit/2538be7773fe41abc84d4ebac406c45423d03885))
+
 ## [1.8.0](https://github.com/MichaelHirn/dddf/compare/v1.7.0...v1.8.0) (2020-09-15)
 
 
