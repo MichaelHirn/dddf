@@ -48,12 +48,12 @@ export interface IS3RepoConfig {
 export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoConfig = IS3RepoConfig> implements IRepo<T, R> {
   public readonly bucketName: string
   public model: AWS.S3
-  public readonly objectPrefix: string = ''
+  public readonly objectPrefix: string
 
   constructor (@unmanaged() config: U) {
     this.bucketName = config.bucketName
     this.model = config.model
-    this.objectPrefix = config.objectPrefix
+    this.objectPrefix = config.objectPrefix ?? ''
   }
 
   public abstract deserialize (data: string): Result<T>
