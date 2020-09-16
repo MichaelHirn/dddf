@@ -91,7 +91,7 @@ export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoC
     return Result.fail(new Error(`invalid Prefix: ${params.Prefix} does not match with prefix ${this.objectPrefix}`))
   }
 
-  public async load (key: string, partialParams: Partial<LoadParams>): Promise<Result<T>> {
+  public async load (key: string, partialParams: Partial<LoadParams> = {}): Promise<Result<T>> {
     try {
       const responseResult = await this.getObject(key, partialParams)
       if (responseResult.isSuccess) {
@@ -105,7 +105,7 @@ export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoC
     }
   }
 
-  public async save (object: T, partialParams: Partial<SaveParams>): Promise<Result<R>> {
+  public async save (object: T, partialParams: Partial<SaveParams> = {}): Promise<Result<R>> {
     try {
       const key = object.id
       const serializedResult = this.serialize(object)
