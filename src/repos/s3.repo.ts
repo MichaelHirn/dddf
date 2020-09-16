@@ -56,6 +56,9 @@ export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoC
     this.objectPrefix = config.objectPrefix
   }
 
+  public abstract deserialize (data: any): Result<T>
+  public abstract serialize (object: T): Result<any>
+
   protected getListParams (params: Partial<ListObjectsParams> = {}): ListObjectsParams {
     return {
       MaxKeys: 1000,
@@ -88,8 +91,46 @@ export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoC
     return Result.fail(new Error(`invalid Prefix: ${params.Prefix} does not match with prefix ${this.objectPrefix}`))
   }
 
-  public abstract async load (key: string, partialParams: Partial<LoadParams>): Promise<Result<T>>
-  public abstract async save (object: T, partialParams: Partial<SaveParams>): Promise<Result<R>>
+  public async load (key: string, partialParams: Partial<LoadParams>): Promise<Result<T>> {
+    try {
+      const responseResult = await this.getObject(key, partialParams)
+      if (responseResult.isSuccess) {
+        const response = responseResult.unwrap()
+        const body = JSON.parse((response.Body as Buffer).toString('utf8'))
+        const result = this.deserialize(body)
+        return result
+      }
+      return Result.fail(responseResult.error)
+    } catch (e) {
+      return Result.fail(e)
+    }
+  }
+
+  public async save (object: T, partialParams: Partial<SaveParams>): Promise<Result<R>> {
+    try {
+      const key = object.id
+      const serializedResult = this.serialize(object)
+      if (serializedResult.isSuccess) {
+        const serialized = serializedResult.unwrap()
+        let fullySerialized = ''
+        if (serialized instanceof Object) {
+          fullySerialized = JSON.stringify(serialized)
+        } else if (typeof serialized === 'string') {
+          fullySerialized = serialized
+        } else {
+          throw new Error(`expected serialize to return string or object but found ${typeof serialized}`)
+        }
+        const responseResult = await this.putObject(key, fullySerialized, partialParams)
+        if (responseResult.isSuccess) {
+          return Result.ok()
+        }
+        return Result.fail(responseResult.error)
+      }
+      return Result.fail(serializedResult.error)
+    } catch (e) {
+      return Result.fail(e)
+    }
+  }
 
   public loadAll (): Rx.Observable<T> {
     return this.listAllObjects().pipe(

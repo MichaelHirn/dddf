@@ -203,6 +203,8 @@ export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoC
     protected static addMissingKeys<T>(keys: string[], map: Map<string, Result<T>>): Map<string, Result<T>>;
     // (undocumented)
     readonly bucketName: string;
+    // (undocumented)
+    abstract deserialize(data: any): Result<T>;
     // Warning: (ae-forgotten-export) The symbol "ListObjectsParams" needs to be exported by the entry point index.d.ts
     //
     // (undocumented)
@@ -240,7 +242,7 @@ export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoC
     // (undocumented)
     listObjectVersions(partialParams: Partial<ListVersionsParams>): Promise<Result<ListVersionsResponse>>;
     // (undocumented)
-    abstract load(key: string, partialParams: Partial<LoadParams>): Promise<Result<T>>;
+    load(key: string, partialParams: Partial<LoadParams>): Promise<Result<T>>;
     // (undocumented)
     loadAll(): Rx.Observable<T>;
     // (undocumented)
@@ -254,9 +256,11 @@ export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoC
     // (undocumented)
     protected putObject(key: string, body: string, partialParams?: Partial<SaveParams>): Promise<Result<SaveResponse>>;
     // (undocumented)
-    abstract save(object: T, partialParams: Partial<SaveParams>): Promise<Result<R>>;
+    save(object: T, partialParams: Partial<SaveParams>): Promise<Result<R>>;
     // (undocumented)
     saveBatch(objects: T[], partialParams?: Partial<SaveParams>): Promise<Result<R>>;
+    // (undocumented)
+    abstract serialize(object: T): Result<any>;
 }
 
 // @public
