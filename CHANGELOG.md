@@ -1,3 +1,10 @@
+### [1.9.1](https://github.com/MichaelHirn/dddf/compare/v1.9.0...v1.9.1) (2020-09-16)
+
+
+### Bug Fixes
+
+* **s3:** simplify (de)serialize interface ([dd69616](https://github.com/MichaelHirn/dddf/commit/dd69616582e12534552309c3719b6fcff9b34ee5))
+
 ## [1.9.0](https://github.com/MichaelHirn/dddf/compare/v1.8.0...v1.9.0) (2020-09-16)
 
 
