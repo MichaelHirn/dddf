@@ -1,3 +1,10 @@
+### [1.9.3](https://github.com/MichaelHirn/dddf/compare/v1.9.2...v1.9.3) (2020-09-16)
+
+
+### Bug Fixes
+
+* **s3:** fix objectPrefix default ([6709729](https://github.com/MichaelHirn/dddf/commit/6709729db5c1c3e2dfd17887caded78815f4aee4))
+
 ### [1.9.2](https://github.com/MichaelHirn/dddf/compare/v1.9.1...v1.9.2) (2020-09-16)
 
 
