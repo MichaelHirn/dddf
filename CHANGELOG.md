@@ -1,3 +1,10 @@
+### [1.9.4](https://github.com/MichaelHirn/dddf/compare/v1.9.3...v1.9.4) (2020-09-17)
+
+
+### Bug Fixes
+
+* **faast:** add missing inversify support ([2865608](https://github.com/MichaelHirn/dddf/commit/28656082b20e91da2f2e434e46367682ee2ad154))
+
 ### [1.9.3](https://github.com/MichaelHirn/dddf/compare/v1.9.2...v1.9.3) (2020-09-16)
 
 
