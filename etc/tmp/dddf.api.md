@@ -138,6 +138,14 @@ export interface IS3RepoConfig {
 }
 
 // @public (undocumented)
+export class JsonS3Repo extends S3Repo<any> {
+    // (undocumented)
+    deserialize(jsonString: string): Result<any>;
+    // (undocumented)
+    serialize(plainJsonObject: any): Result<string>;
+}
+
+// @public (undocumented)
 export interface Mapper<T, U> {
     // (undocumented)
     deserialize: (value: U) => T;

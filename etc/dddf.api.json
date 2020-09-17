@@ -2221,6 +2221,133 @@
           "extendsTokenRanges": []
         },
         {
+          "kind": "Class",
+          "canonicalReference": "dddf!JsonS3Repo:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class JsonS3Repo extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "S3Repo",
+              "canonicalReference": "dddf!S3Repo:class"
+            },
+            {
+              "kind": "Content",
+              "text": "<any> "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "JsonS3Repo",
+          "members": [
+            {
+              "kind": "Method",
+              "canonicalReference": "dddf!JsonS3Repo#deserialize:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "deserialize(jsonString: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Result",
+                  "canonicalReference": "dddf!Result:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<any>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "jsonString",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "deserialize"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "dddf!JsonS3Repo#serialize:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "serialize(plainJsonObject: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Result",
+                  "canonicalReference": "dddf!Result:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "plainJsonObject",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "serialize"
+            }
+          ],
+          "extendsTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          },
+          "implementsTokenRanges": []
+        },
+        {
           "kind": "Interface",
           "canonicalReference": "dddf!Mapper:interface",
           "docComment": "",
