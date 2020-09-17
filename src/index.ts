@@ -1,6 +1,5 @@
 export { CacheRepo, ICacheRepoConfig } from './repos/cache.repo'
 export { DynamoRepo, IDynamoRepoConfig } from './repos/dynamo.repo'
-export { FaastUseCase, IFaastUseCaseConfig } from './useCases/faast'
 export { S3Repo, IS3RepoConfig } from './repos/s3.repo'
 export { AggregateRoot } from './aggregate'
 export { Entity } from './entity'

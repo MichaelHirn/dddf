@@ -5,7 +5,6 @@
 ```ts
 
 import * as AWS_2 from 'aws-sdk';
-import * as Faast from 'faastjs';
 import { parseDomain } from 'parse-domain';
 import * as Rx from 'rxjs';
 
@@ -110,24 +109,6 @@ export abstract class Entity<T> {
 }
 
 // @public (undocumented)
-export abstract class FaastUseCase<T extends object, U, V = void> {
-    protected constructor(config: IFaastUseCaseConfig<T>);
-    // (undocumented)
-    readonly environment: IFaastUseCaseConfig<T>['environment'];
-    // Warning: (ae-forgotten-export) The symbol "ArgumentTypes" needs to be exported by the entry point index.d.ts
-    exec(stream: ArgumentTypes<FaastUseCase<T, U, V>['main']>[0], config?: ArgumentTypes<FaastUseCase<T, U, V>['main']>[1]): Promise<Result<V>>;
-    // (undocumented)
-    abstract main(stream: Rx.Observable<U>, config: any): Promise<Result<V>>;
-    // (undocumented)
-    model(): Promise<FaastModel<T>>;
-    // Warning: (ae-forgotten-export) The symbol "FaastModel" needs to be exported by the entry point index.d.ts
-    //
-    // (undocumented)
-    protected _model: FaastModel<T>;
-    setupModel(): Promise<FaastModel<T>>;
-}
-
-// @public (undocumented)
 export interface ICacheRepoConfig<T extends Entity<any>> {
     cacheRepo: IRepo<T>;
     dataRepo: IRepo<T>;
@@ -139,16 +120,6 @@ export interface IDynamoRepoConfig {
     model: AWS_2.DynamoDB;
     // (undocumented)
     tableName: string;
-}
-
-// @public (undocumented)
-export interface IFaastUseCaseConfig<T extends object> {
-    // (undocumented)
-    environment: 'local' | 'aws';
-    // (undocumented)
-    functions: T;
-    // (undocumented)
-    params: Faast.CommonOptions | Faast.AwsOptions;
 }
 
 // @public (undocumented)
@@ -242,7 +213,7 @@ export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoC
     // (undocumented)
     listObjectVersions(partialParams: Partial<ListVersionsParams>): Promise<Result<ListVersionsResponse>>;
     // (undocumented)
-    load(key: string, partialParams: Partial<LoadParams>): Promise<Result<T>>;
+    load(key: string, partialParams?: Partial<LoadParams>): Promise<Result<T>>;
     // (undocumented)
     loadAll(): Rx.Observable<T>;
     // (undocumented)
@@ -256,7 +227,7 @@ export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoC
     // (undocumented)
     protected putObject(key: string, body: string, partialParams?: Partial<SaveParams>): Promise<Result<SaveResponse>>;
     // (undocumented)
-    save(object: T, partialParams: Partial<SaveParams>): Promise<Result<R>>;
+    save(object: T, partialParams?: Partial<SaveParams>): Promise<Result<R>>;
     // (undocumented)
     saveBatch(objects: T[], partialParams?: Partial<SaveParams>): Promise<Result<R>>;
     // (undocumented)
