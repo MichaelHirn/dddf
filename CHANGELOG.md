@@ -1,3 +1,10 @@
+### [1.9.5](https://github.com/MichaelHirn/dddf/compare/v1.9.4...v1.9.5) (2020-09-17)
+
+
+### Bug Fixes
+
+* **faast:** remove faast useCase ([5d646b4](https://github.com/MichaelHirn/dddf/commit/5d646b472bad173ddd1a0ad070ba8caae3b38d6f))
+
 ### [1.9.4](https://github.com/MichaelHirn/dddf/compare/v1.9.3...v1.9.4) (2020-09-17)
 
 
