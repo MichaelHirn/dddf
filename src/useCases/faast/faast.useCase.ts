@@ -1,5 +1,6 @@
 import * as Faast from 'faastjs'
 import * as Rx from 'rxjs'
+import { injectable, unmanaged } from 'inversify'
 import { Result } from '../../result'
 
 type ArgumentTypes<F extends Function> = F extends (...args: infer A) => any ? A : never
@@ -12,13 +13,14 @@ export interface IFaastUseCaseConfig<T extends object> {
   params: Faast.CommonOptions | Faast.AwsOptions
 }
 
+@injectable()
 export abstract class FaastUseCase<T extends object, U, V = void> {
   public readonly environment: IFaastUseCaseConfig<T>['environment']
   protected _model: FaastModel<T>
   private readonly functions: IFaastUseCaseConfig<T>['functions']
   private readonly params: IFaastUseCaseConfig<T>['params']
 
-  protected constructor (config: IFaastUseCaseConfig<T>) {
+  protected constructor (@unmanaged() config: IFaastUseCaseConfig<T>) {
     this.environment = config.environment
     this.functions = config.functions
     this.params = config.params
