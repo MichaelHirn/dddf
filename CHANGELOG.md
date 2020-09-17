@@ -1,3 +1,10 @@
+## [1.10.0](https://github.com/MichaelHirn/dddf/compare/v1.9.5...v1.10.0) (2020-09-17)
+
+
+### Features
+
+* **repos:** add JsonS3Repo implementation ([116464f](https://github.com/MichaelHirn/dddf/commit/116464fa27a5283cec1ad6bcadac29b4996b6d89))
+
 ### [1.9.5](https://github.com/MichaelHirn/dddf/compare/v1.9.4...v1.9.5) (2020-09-17)
 
 
