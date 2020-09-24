@@ -182,6 +182,10 @@ export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoC
     protected static addMissingKeys<T>(keys: string[], map: Map<string, Result<T>>): Map<string, Result<T>>;
     // (undocumented)
     readonly bucketName: string;
+    // Warning: (ae-forgotten-export) The symbol "RemoveResponse" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    protected deleteObject(key: string, partialParams?: Partial<RemoveParams>): Promise<Result<RemoveResponse>>;
     // (undocumented)
     abstract deserialize(data: string): Result<T>;
     // Warning: (ae-forgotten-export) The symbol "ListObjectsParams" needs to be exported by the entry point index.d.ts
@@ -204,6 +208,10 @@ export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoC
     //
     // (undocumented)
     getObjectVersions(key: string): Promise<ListVersionsResponse['Versions']>;
+    // Warning: (ae-forgotten-export) The symbol "RemoveParams" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    protected getRemoveParams(key: string, params?: Partial<RemoveParams>): Result<RemoveParams>;
     // Warning: (ae-forgotten-export) The symbol "SaveParams" needs to be exported by the entry point index.d.ts
     //
     // (undocumented)
@@ -234,6 +242,8 @@ export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoC
     //
     // (undocumented)
     protected putObject(key: string, body: string, partialParams?: Partial<SaveParams>): Promise<Result<SaveResponse>>;
+    // (undocumented)
+    remove(key: string, partialParams?: Partial<RemoveParams>): Promise<Result<R>>;
     // (undocumented)
     save(object: T, partialParams?: Partial<SaveParams>): Promise<Result<R>>;
     // (undocumented)

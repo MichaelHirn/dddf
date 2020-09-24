@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import * as AWS from 'aws-sdk'
 import * as Rx from 'rxjs'
 import * as RxOps from 'rxjs/operators'
@@ -14,6 +15,8 @@ export type LoadResponse = AWS.S3.GetObjectOutput
 export type LoadParams = AWS.S3.GetObjectRequest
 export type SaveResponse = AWS.S3.PutObjectOutput
 export type SaveParams = AWS.S3.PutObjectRequest
+export type RemoveResponse = AWS.S3.DeleteObjectOutput
+export type RemoveParams = AWS.S3.DeleteObjectRequest
 
 export interface IS3RepoConfig {
 
@@ -81,6 +84,13 @@ export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoC
     return Result.fail(new Error(`invalid key: "${key}" does not match with prefix "${this.objectPrefix}"`))
   }
 
+  protected getRemoveParams (key: string, params: Partial<RemoveParams> = {}): Result<RemoveParams> {
+    if (key.startsWith(this.objectPrefix)) {
+      return Result.ok(Object.assign(params, { Key: key, Bucket: this.bucketName }))
+    }
+    return Result.fail(new Error(`invalid key: "${key}" does not match with prefix "${this.objectPrefix}"`))
+  }
+
   protected getListVersionsParams (params: Partial<ListVersionsParams> = {}): Result<ListVersionsParams> {
     if (typeof params.Prefix === 'undefined') {
       params.Prefix = this.objectPrefix
@@ -117,6 +127,18 @@ export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoC
         return Result.fail(responseResult.error)
       }
       return Result.fail(serializedResult.error)
+    } catch (e) {
+      return Result.fail(e)
+    }
+  }
+
+  public async remove (key: string, partialParams: Partial<RemoveParams> = {}): Promise<Result<R>> {
+    try {
+      const responseResult = await this.deleteObject(key, partialParams)
+      if (responseResult.isSuccess) {
+        return Result.ok()
+      }
+      return Result.fail(responseResult.error)
     } catch (e) {
       return Result.fail(e)
     }
@@ -264,6 +286,18 @@ export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoC
       const paramsResult = this.getLoadParams(key, partialParams)
       if (paramsResult.isSuccess) {
         return Result.ok(await this.model.getObject(paramsResult.unwrap()).promise())
+      }
+      return paramsResult
+    } catch (e) {
+      return Result.fail(e)
+    }
+  }
+
+  protected async deleteObject (key: string, partialParams: Partial<RemoveParams> = {}): Promise<Result<RemoveResponse>> {
+    try {
+      const paramsResult = this.getRemoveParams(key, partialParams)
+      if (paramsResult.isSuccess) {
+        return Result.ok(await this.model.deleteObject(paramsResult.unwrap()).promise())
       }
       return paramsResult
     } catch (e) {
