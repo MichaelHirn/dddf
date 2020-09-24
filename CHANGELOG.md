@@ -1,3 +1,10 @@
+## [1.11.0](https://github.com/MichaelHirn/dddf/compare/v1.10.0...v1.11.0) (2020-09-24)
+
+
+### Features
+
+* **s3:** add remove support ([7956895](https://github.com/MichaelHirn/dddf/commit/795689555deab1c189ff44f56cbfb060126c5fcc))
+
 ## [1.10.0](https://github.com/MichaelHirn/dddf/compare/v1.9.5...v1.10.0) (2020-09-17)
 
 
