@@ -1,3 +1,10 @@
+## [1.12.0](https://github.com/MichaelHirn/dddf/compare/v1.11.0...v1.12.0) (2020-11-17)
+
+
+### Features
+
+* allow string type for Entity ID ([6e2d873](https://github.com/MichaelHirn/dddf/commit/6e2d87305f811334066d72472e11e38a63355bc8))
+
 ## [1.11.0](https://github.com/MichaelHirn/dddf/compare/v1.10.0...v1.11.0) (2020-09-24)
 
 
