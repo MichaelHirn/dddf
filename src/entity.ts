@@ -2,11 +2,11 @@ const isEntity = (v: any): v is Entity<any> => {
   return v instanceof Entity
 }
 
-export abstract class Entity<T> {
-  protected readonly _id: string
+export abstract class Entity<T, U extends string = string> {
+  protected readonly _id: U
   protected props: T
 
-  constructor (props: T, id: string) {
+  constructor (props: T, id: U) {
     /* eslint-disable-next-line @typescript-eslint/strict-boolean-expressions */
     this._id = id
     this.props = props
@@ -31,7 +31,7 @@ export abstract class Entity<T> {
     return this._id === object._id
   }
 
-  public get id (): string {
+  public get id (): U {
     return this._id
   }
 }

@@ -96,14 +96,14 @@ export abstract class DynamoRepo<T extends Entity<any>, U extends IDynamoRepoCon
 }
 
 // @public (undocumented)
-export abstract class Entity<T> {
-    constructor(props: T, id: string);
+export abstract class Entity<T, U extends string = string> {
+    constructor(props: T, id: U);
     // (undocumented)
     equals(object?: Entity<T>): boolean;
     // (undocumented)
-    get id(): string;
+    get id(): U;
     // (undocumented)
-    protected readonly _id: string;
+    protected readonly _id: U;
     // (undocumented)
     protected props: T;
 }
