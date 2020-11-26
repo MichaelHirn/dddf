@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 export { CacheRepo, ICacheRepoConfig } from './repos/cache.repo'
 export { DynamoRepo, IDynamoRepoConfig } from './repos/dynamo.repo'
 export { S3Repo, IS3RepoConfig } from './repos/s3.repo'
