@@ -1,3 +1,10 @@
+### [1.12.1](https://github.com/MichaelHirn/dddf/compare/v1.12.0...v1.12.1) (2020-11-26)
+
+
+### Bug Fixes
+
+* prevent reflect-metadata error ([fe7c3c5](https://github.com/MichaelHirn/dddf/commit/fe7c3c5568611337a4cbc02b90f1108ba53ef672))
+
 ## [1.12.0](https://github.com/MichaelHirn/dddf/compare/v1.11.0...v1.12.0) (2020-11-17)
 
 
