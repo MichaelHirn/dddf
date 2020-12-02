@@ -179,7 +179,7 @@ export abstract class DynamoRepo<T extends Entity<any>, U extends IDynamoRepoCon
       const map = (responseItems as any).reduce((profiles, responseObject: any) => {
         profiles.set(
           responseObject[indexKeys[0]],
-          this.deserialize(responseObject).unwrap()
+          this.deserialize(responseObject)
         )
         return profiles
       }, new Map<string, Result<T>>())
