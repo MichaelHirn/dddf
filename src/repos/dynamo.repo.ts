@@ -174,9 +174,11 @@ export abstract class DynamoRepo<T extends Entity<any>, U extends IDynamoRepoCon
         RxOps.concatMap(responseItems => responseItems),
         RxOps.toArray()
       ).toPromise()
+      // NOTE: this does not work when both a hashKey and a rangeKey are defined for the table
+      const indexKeys = Object.keys(this.toPrimaryKeyAttribute(''))
       const map = (responseItems as any).reduce((profiles, responseObject: any) => {
         profiles.set(
-          responseObject.entityUrn,
+          responseObject[indexKeys[0]],
           this.deserialize(responseObject).unwrap()
         )
         return profiles
