@@ -1,3 +1,10 @@
+### [1.12.3](https://github.com/MichaelHirn/dddf/compare/v1.12.2...v1.12.3) (2020-12-02)
+
+
+### Bug Fixes
+
+* fix dynamo loadBatch bug ([ab27d2a](https://github.com/MichaelHirn/dddf/commit/ab27d2af2383fa9167f0fa308aa6a2008d5cae69))
+
 ### [1.12.2](https://github.com/MichaelHirn/dddf/compare/v1.12.1...v1.12.2) (2020-12-02)
 
 
