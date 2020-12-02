@@ -1,3 +1,10 @@
+### [1.12.2](https://github.com/MichaelHirn/dddf/compare/v1.12.1...v1.12.2) (2020-12-02)
+
+
+### Bug Fixes
+
+* fix hard coded dynamo hashKey ([63a6689](https://github.com/MichaelHirn/dddf/commit/63a6689b941c93d854cb90aab67f292d268eeb07))
+
 ### [1.12.1](https://github.com/MichaelHirn/dddf/compare/v1.12.0...v1.12.1) (2020-11-26)
 
 
