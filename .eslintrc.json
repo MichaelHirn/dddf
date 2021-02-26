@@ -304,6 +304,8 @@
       "yoda": [
         "error",
         "never"
-      ]
+      ],
+      "@typescript-eslint/strict-boolean-expressions": "off",
+      "@typescript-eslint/no-invalid-void-type": "off"
     }
 }
