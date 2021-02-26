@@ -1,3 +1,10 @@
+### [1.12.4](https://github.com/MichaelHirn/dddf/compare/v1.12.3...v1.12.4) (2021-02-26)
+
+
+### Bug Fixes
+
+* **deps:** add missing rxjs dep ([5d113c2](https://github.com/MichaelHirn/dddf/commit/5d113c23f43ad65ef0d747b6a20f40b20211d5cc))
+
 ### [1.12.3](https://github.com/MichaelHirn/dddf/compare/v1.12.2...v1.12.3) (2020-12-02)
 
 
