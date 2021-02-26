@@ -1,7 +1,7 @@
 {
   "metadata": {
     "toolPackage": "@microsoft/api-extractor",
-    "toolVersion": "7.8.4",
+    "toolVersion": "7.13.1",
     "schemaVersion": 1003,
     "oldestForwardsCompatibleVersion": 1001
   },
@@ -203,6 +203,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 8,
@@ -286,6 +287,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 6,
@@ -362,6 +364,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 6,
@@ -472,6 +475,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": true,
               "returnTypeTokenRange": {
                 "startIndex": 8,
@@ -533,6 +537,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "db",
               "propertyTypeTokenRange": {
@@ -581,6 +586,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
@@ -639,6 +645,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
@@ -688,6 +695,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
@@ -733,6 +741,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
@@ -778,6 +787,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
@@ -837,6 +847,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 6,
@@ -882,6 +893,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
@@ -941,6 +953,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 6,
@@ -999,6 +1012,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
@@ -1052,6 +1066,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
@@ -1128,6 +1143,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
@@ -1169,6 +1185,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "model",
               "propertyTypeTokenRange": {
@@ -1226,6 +1243,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 6,
@@ -1284,6 +1302,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
@@ -1342,6 +1361,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
@@ -1400,6 +1420,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
@@ -1449,6 +1470,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
@@ -1485,6 +1507,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "tableName",
               "propertyTypeTokenRange": {
@@ -1519,6 +1542,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
@@ -1616,6 +1640,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "_id",
               "propertyTypeTokenRange": {
@@ -1700,6 +1725,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 4,
@@ -1736,6 +1762,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "id",
               "propertyTypeTokenRange": {
@@ -1762,6 +1789,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "props",
               "propertyTypeTokenRange": {
@@ -1835,6 +1863,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "cacheRepo",
               "propertyTypeTokenRange": {
@@ -1865,6 +1894,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "dataRepo",
               "propertyTypeTokenRange": {
@@ -1911,6 +1941,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "model",
               "propertyTypeTokenRange": {
@@ -1936,6 +1967,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "tableName",
               "propertyTypeTokenRange": {
@@ -2052,6 +2084,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "returnTypeTokenRange": {
                 "startIndex": 5,
                 "endIndex": 9
@@ -2124,6 +2157,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "returnTypeTokenRange": {
                 "startIndex": 5,
                 "endIndex": 9
@@ -2182,6 +2216,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "bucketName",
               "propertyTypeTokenRange": {
@@ -2212,6 +2247,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "model",
               "propertyTypeTokenRange": {
@@ -2237,6 +2273,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": true,
               "releaseTag": "Public",
               "name": "objectPrefix",
               "propertyTypeTokenRange": {
@@ -2300,6 +2337,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
@@ -2349,6 +2387,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
@@ -2429,6 +2468,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "deserialize",
               "propertyTypeTokenRange": {
@@ -2454,6 +2494,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "serialize",
               "propertyTypeTokenRange": {
@@ -2535,6 +2576,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": true,
               "returnTypeTokenRange": {
                 "startIndex": 6,
@@ -2572,6 +2614,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "error",
               "propertyTypeTokenRange": {
@@ -2612,6 +2655,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": true,
               "returnTypeTokenRange": {
                 "startIndex": 3,
@@ -2661,6 +2705,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "isFailure",
               "propertyTypeTokenRange": {
@@ -2687,6 +2732,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "isSuccess",
               "propertyTypeTokenRange": {
@@ -2726,6 +2772,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": true,
               "returnTypeTokenRange": {
                 "startIndex": 3,
@@ -2780,6 +2827,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 1,
@@ -2808,6 +2856,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 1,
@@ -3013,6 +3062,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": true,
               "returnTypeTokenRange": {
                 "startIndex": 8,
@@ -3069,6 +3119,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "bucketName",
               "propertyTypeTokenRange": {
@@ -3148,6 +3199,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 8,
@@ -3204,6 +3256,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
@@ -3263,6 +3316,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 6,
@@ -3335,6 +3389,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 6,
@@ -3415,6 +3470,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 8,
@@ -3511,6 +3567,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 8,
@@ -3576,6 +3633,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
@@ -3656,6 +3714,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 8,
@@ -3751,6 +3810,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 10,
@@ -3832,6 +3892,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 6,
@@ -3892,22 +3953,23 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "<"
+                  "text": "<AWS."
                 },
                 {
                   "kind": "Reference",
-                  "text": "ListObjectsResponse",
-                  "canonicalReference": "dddf!ListObjectsResponse:type"
+                  "text": "S3.ObjectList",
+                  "canonicalReference": "aws-sdk!~S3.ObjectList:type"
                 },
                 {
                   "kind": "Content",
-                  "text": "['Contents'][0]>"
+                  "text": "[0]>"
                 },
                 {
                   "kind": "Content",
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 6,
@@ -3968,22 +4030,23 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "<"
+                  "text": "<AWS."
                 },
                 {
                   "kind": "Reference",
-                  "text": "ListVersionsResponse",
-                  "canonicalReference": "dddf!ListVersionsResponse:type"
+                  "text": "S3.ObjectVersionList",
+                  "canonicalReference": "aws-sdk!~S3.ObjectVersionList:type"
                 },
                 {
                   "kind": "Content",
-                  "text": "['Versions'][0]>"
+                  "text": "[0]>"
                 },
                 {
                   "kind": "Content",
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 6,
@@ -4065,6 +4128,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 6,
@@ -4146,6 +4210,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 6,
@@ -4226,6 +4291,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 8,
@@ -4278,6 +4344,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 1,
@@ -4368,6 +4435,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 8,
@@ -4416,6 +4484,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "model",
               "propertyTypeTokenRange": {
@@ -4442,6 +4511,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "objectPrefix",
               "propertyTypeTokenRange": {
@@ -4529,6 +4599,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 10,
@@ -4623,6 +4694,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 8,
@@ -4710,6 +4782,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 8,
@@ -4797,6 +4870,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 8,
@@ -4853,6 +4927,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
@@ -4918,6 +4993,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": true,
               "returnTypeTokenRange": {
                 "startIndex": 3,
@@ -4962,6 +5038,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": true,
               "returnTypeTokenRange": {
                 "startIndex": 3,
@@ -5006,6 +5083,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": true,
               "returnTypeTokenRange": {
                 "startIndex": 3,
@@ -5064,6 +5142,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": true,
               "returnTypeTokenRange": {
                 "startIndex": 3,
@@ -5109,6 +5188,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": true,
               "returnTypeTokenRange": {
                 "startIndex": 3,
@@ -5226,6 +5306,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 4,
@@ -5262,6 +5343,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "props",
               "propertyTypeTokenRange": {
@@ -5326,6 +5408,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": true,
               "returnTypeTokenRange": {
                 "startIndex": 9,
@@ -5429,6 +5512,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": true,
               "returnTypeTokenRange": {
                 "startIndex": 7,
@@ -5513,6 +5597,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": true,
               "returnTypeTokenRange": {
                 "startIndex": 5,
@@ -5577,6 +5662,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": true,
               "returnTypeTokenRange": {
                 "startIndex": 5,
@@ -5650,6 +5736,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": true,
               "returnTypeTokenRange": {
                 "startIndex": 5,
@@ -5714,6 +5801,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "isStatic": true,
               "returnTypeTokenRange": {
                 "startIndex": 5,
