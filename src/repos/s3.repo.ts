@@ -193,7 +193,7 @@ export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoC
     ).toPromise()
   }
 
-  public listAllObjectVersions (partialParams: Partial<ListVersionsParams> = {}): Rx.Observable<ListVersionsResponse['Versions'][0]> {
+  public listAllObjectVersions (partialParams: Partial<ListVersionsParams> = {}): Rx.Observable<AWS.S3.ObjectVersionList[0]> {
     return Rx.defer(async () => {
       return await this.listObjectVersions(this.getListVersionsParams(partialParams).unwrap())
     }).pipe(
@@ -239,7 +239,7 @@ export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoC
     )
   }
 
-  public listAllObjects (partialParams: Partial<ListObjectsParams> = {}): Rx.Observable<ListObjectsResponse['Contents'][0]> {
+  public listAllObjects (partialParams: Partial<ListObjectsParams> = {}): Rx.Observable<AWS.S3.ObjectList[0]> {
     return Rx.defer(async () => await this.listObjects(this.getListParams(partialParams))).pipe(
       RxOps.expand(response => {
         if (response.isSuccess && response.unwrap().IsTruncated) {

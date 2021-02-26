@@ -218,12 +218,12 @@ export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoC
     protected getSaveParams(key: string, body: string, params?: Partial<SaveParams>): Result<SaveParams>;
     // (undocumented)
     listAllObjectKeys(partialParams?: Partial<ListObjectsParams>): Rx.Observable<string>;
+    // (undocumented)
+    listAllObjects(partialParams?: Partial<ListObjectsParams>): Rx.Observable<AWS_2.S3.ObjectList[0]>;
+    // (undocumented)
+    listAllObjectVersions(partialParams?: Partial<ListVersionsParams>): Rx.Observable<AWS_2.S3.ObjectVersionList[0]>;
     // Warning: (ae-forgotten-export) The symbol "ListObjectsResponse" needs to be exported by the entry point index.d.ts
     //
-    // (undocumented)
-    listAllObjects(partialParams?: Partial<ListObjectsParams>): Rx.Observable<ListObjectsResponse['Contents'][0]>;
-    // (undocumented)
-    listAllObjectVersions(partialParams?: Partial<ListVersionsParams>): Rx.Observable<ListVersionsResponse['Versions'][0]>;
     // (undocumented)
     listObjects(partialParams?: Partial<ListObjectsParams>): Promise<Result<ListObjectsResponse>>;
     // (undocumented)

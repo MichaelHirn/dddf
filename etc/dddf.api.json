@@ -3892,16 +3892,16 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "<"
+                  "text": "<AWS."
                 },
                 {
                   "kind": "Reference",
-                  "text": "ListObjectsResponse",
-                  "canonicalReference": "dddf!ListObjectsResponse:type"
+                  "text": "S3.ObjectList",
+                  "canonicalReference": "aws-sdk!~S3.ObjectList:type"
                 },
                 {
                   "kind": "Content",
-                  "text": "['Contents'][0]>"
+                  "text": "[0]>"
                 },
                 {
                   "kind": "Content",
@@ -3968,16 +3968,16 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "<"
+                  "text": "<AWS."
                 },
                 {
                   "kind": "Reference",
-                  "text": "ListVersionsResponse",
-                  "canonicalReference": "dddf!ListVersionsResponse:type"
+                  "text": "S3.ObjectVersionList",
+                  "canonicalReference": "aws-sdk!~S3.ObjectVersionList:type"
                 },
                 {
                   "kind": "Content",
-                  "text": "['Versions'][0]>"
+                  "text": "[0]>"
                 },
                 {
                   "kind": "Content",
