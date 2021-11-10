@@ -57,6 +57,31 @@
           "implementsTokenRanges": []
         },
         {
+          "kind": "TypeAlias",
+          "canonicalReference": "dddf!CacheControlActions:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare type CacheControlActions = "
+            },
+            {
+              "kind": "Content",
+              "text": "'refresh' | 'revalidate' | 'nothing'"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "CacheControlActions",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
           "kind": "Enum",
           "canonicalReference": "dddf!CacheControlAge:enum",
           "docComment": "",
@@ -259,7 +284,7 @@
         {
           "kind": "Class",
           "canonicalReference": "dddf!CacheControlEntity:class",
-          "docComment": "/**\n * Universal control for caching behavior, e.g. with {@link CacheRepo}.\n *\n * @remarks\n *\n * To get started you need to know that there are only four types of CacheControl: 1. No Cache Control 2. Immutable Cache Control 3. Mutable Cache Control (Strict) 4. Mutable Cache Control (Not Strict) (see the four static methods below to create them easily)\n *\n * and they differ in how they handle fresh and expired caches (see `maxAge` and `isExpired`).\n *\n * There are only three ways they can respond to a fresh or expired cache (see `mustDoWhat`): 1. refresh - load version directly from origin server, to not use any possible cache entries 2. revalidate - check with origin server if a newer version exists before returning any possible cache entries 3. nothing - return possible cache entries, do not check with origin server\n *\n * to see how each of the four types respond to fresh and expired caches see the CacheControl spec test file.\n */\n",
+          "docComment": "/**\n * Universal control for caching behavior, e.g. with {@link dddf#CacheRepo}.\n *\n * @remarks\n *\n * To get started you need to know that there are only four types of CacheControl: 1. No Cache Control 2. Immutable Cache Control 3. Mutable Cache Control (Strict) 4. Mutable Cache Control (Not Strict) (see the four static methods below to create them easily)\n *\n * and they differ in how they handle fresh and expired caches (see `maxAge` and `isExpired`).\n *\n * There are only three ways they can respond to a fresh or expired cache (see `mustDoWhat`): 1. refresh - load version directly from origin server, to not use any possible cache entries 2. revalidate - check with origin server if a newer version exists before returning any possible cache entries 3. nothing - return possible cache entries, do not check with origin server\n *\n * to see how each of the four types respond to fresh and expired caches see the CacheControl spec test file.\n *\n * @beta\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -284,7 +309,7 @@
               "text": "> "
             }
           ],
-          "releaseTag": "Public",
+          "releaseTag": "Beta",
           "name": "CacheControlEntity",
           "members": [
             {
@@ -341,7 +366,7 @@
                 "startIndex": 5,
                 "endIndex": 9
               },
-              "releaseTag": "Public",
+              "releaseTag": "Beta",
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -415,7 +440,7 @@
                 "startIndex": 5,
                 "endIndex": 9
               },
-              "releaseTag": "Public",
+              "releaseTag": "Beta",
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -489,7 +514,7 @@
                 "startIndex": 5,
                 "endIndex": 9
               },
-              "releaseTag": "Public",
+              "releaseTag": "Beta",
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -563,7 +588,7 @@
                 "startIndex": 5,
                 "endIndex": 9
               },
-              "releaseTag": "Public",
+              "releaseTag": "Beta",
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -607,7 +632,7 @@
                 "startIndex": 1,
                 "endIndex": 2
               },
-              "releaseTag": "Public",
+              "releaseTag": "Beta",
               "overloadIndex": 1,
               "parameters": [],
               "name": "doCache"
@@ -636,7 +661,7 @@
                 "startIndex": 1,
                 "endIndex": 2
               },
-              "releaseTag": "Public",
+              "releaseTag": "Beta",
               "overloadIndex": 1,
               "parameters": [],
               "name": "doNotCache"
@@ -688,7 +713,7 @@
                 "startIndex": 3,
                 "endIndex": 7
               },
-              "releaseTag": "Public",
+              "releaseTag": "Beta",
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -743,7 +768,7 @@
                 "startIndex": 5,
                 "endIndex": 6
               },
-              "releaseTag": "Public",
+              "releaseTag": "Beta",
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -787,7 +812,7 @@
                 "startIndex": 1,
                 "endIndex": 2
               },
-              "releaseTag": "Public",
+              "releaseTag": "Beta",
               "overloadIndex": 1,
               "parameters": [],
               "name": "isMustRevalidate"
@@ -816,7 +841,7 @@
                 "startIndex": 1,
                 "endIndex": 2
               },
-              "releaseTag": "Public",
+              "releaseTag": "Beta",
               "overloadIndex": 1,
               "parameters": [],
               "name": "isNoCache"
@@ -845,7 +870,7 @@
                 "startIndex": 1,
                 "endIndex": 2
               },
-              "releaseTag": "Public",
+              "releaseTag": "Beta",
               "overloadIndex": 1,
               "parameters": [],
               "name": "isNoStore"
@@ -874,7 +899,7 @@
                 "startIndex": 1,
                 "endIndex": 2
               },
-              "releaseTag": "Public",
+              "releaseTag": "Beta",
               "overloadIndex": 1,
               "parameters": [],
               "name": "maxAge"
@@ -907,8 +932,9 @@
                   "text": "): "
                 },
                 {
-                  "kind": "Content",
-                  "text": "'refresh' | 'revalidate' | 'nothing'"
+                  "kind": "Reference",
+                  "text": "CacheControlActions",
+                  "canonicalReference": "dddf!CacheControlActions:type"
                 },
                 {
                   "kind": "Content",
@@ -921,7 +947,7 @@
                 "startIndex": 5,
                 "endIndex": 6
               },
-              "releaseTag": "Public",
+              "releaseTag": "Beta",
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -983,7 +1009,7 @@
                 "startIndex": 5,
                 "endIndex": 6
               },
-              "releaseTag": "Public",
+              "releaseTag": "Beta",
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -1045,7 +1071,7 @@
                 "startIndex": 5,
                 "endIndex": 6
               },
-              "releaseTag": "Public",
+              "releaseTag": "Beta",
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -1089,7 +1115,7 @@
                 "startIndex": 1,
                 "endIndex": 2
               },
-              "releaseTag": "Public",
+              "releaseTag": "Beta",
               "overloadIndex": 1,
               "parameters": [],
               "name": "subjectId"

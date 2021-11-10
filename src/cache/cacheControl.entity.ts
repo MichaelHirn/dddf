@@ -14,6 +14,8 @@ export enum CacheControlAge {
   ETERNAL = Number.MAX_SAFE_INTEGER
 }
 
+export type CacheControlActions = 'refresh' | 'revalidate' | 'nothing'
+
 export interface CacheControlProps {
 
   /**
@@ -37,7 +39,7 @@ export interface CacheControlProps {
 }
 
 /**
-* Universal control for caching behavior, e.g. with {@link CacheRepo}.
+* Universal control for caching behavior, e.g. with {@link dddf#CacheRepo}.
 *
 * @remarks
 * For more information on caching and cache-control have a look at these two links:
@@ -60,6 +62,8 @@ export interface CacheControlProps {
 * 3. nothing - return possible cache entries, do not check with origin server
 *
 * to see how each of the four types respond to fresh and expired caches see the CacheControl spec test file.
+*
+* @beta
 */
 export class CacheControlEntity extends Entity<CacheControlProps> {
   public subjectId (): string {
@@ -134,7 +138,7 @@ export class CacheControlEntity extends Entity<CacheControlProps> {
     return false
   }
 
-  public mustDoWhat (startDate: Date, nowDate: Date = new Date()): 'refresh' | 'revalidate' | 'nothing' {
+  public mustDoWhat (startDate: Date, nowDate: Date = new Date()): CacheControlActions {
     if (this.mustRefresh(startDate, nowDate)) {
       return 'refresh'
     } else if (this.mustRevalidate(startDate, nowDate)) {

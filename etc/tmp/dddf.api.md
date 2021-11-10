@@ -13,6 +13,9 @@ export abstract class AggregateRoot<T> extends Entity<T> {
 }
 
 // @public (undocumented)
+export type CacheControlActions = 'refresh' | 'revalidate' | 'nothing';
+
+// @public (undocumented)
 export enum CacheControlAge {
     // (undocumented)
     DAY = 86400,
@@ -34,7 +37,7 @@ export enum CacheControlAge {
     YEAR = 31536000
 }
 
-// @public
+// @beta
 export class CacheControlEntity extends Entity<CacheControlProps> {
     // (undocumented)
     static asImmutableCache(maxAge: number, subjectId: string): Result<CacheControlEntity>;
@@ -61,7 +64,7 @@ export class CacheControlEntity extends Entity<CacheControlProps> {
     // (undocumented)
     maxAge(): number;
     // (undocumented)
-    mustDoWhat(startDate: Date, nowDate?: Date): 'refresh' | 'revalidate' | 'nothing';
+    mustDoWhat(startDate: Date, nowDate?: Date): CacheControlActions;
     // (undocumented)
     mustRefresh(startDate: Date, nowDate?: Date): boolean;
     // (undocumented)
