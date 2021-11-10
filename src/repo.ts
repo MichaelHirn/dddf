@@ -7,20 +7,20 @@ export interface IRepo<T extends Entity<any>, R = void> {
   remove: (t: string, args: any) => Promise<Result<R>>
 }
 
-export interface IRepoLoadWithVersionResultBody<T extends Entity<any>> {
+export interface IRepoLoadWithVersionResultBody<T extends Entity<any>, V extends string | Date> {
   // the creation date of that version
   createdAt: Date
   // can be a Date (e.g. to support Last-Modified flows) or a string (e.g. to support ETag flows)
-  version: string | Date
+  version: V
   entity: T
 }
 
-export interface IRepoVersionAwareCurrent<T extends Entity<any>, R = void> extends IRepo<T, R> {
+export interface IRepoVersionAwareCurrent<T extends Entity<any>, V extends string | Date, R = void> extends IRepo<T, R> {
 
   /**
   * Necessary for Cache to support {@link CacheControlEntity} to determine if cache entry is expired or not
   */
-  loadWithVersion: (t: string, args: any) => Promise<Result<IRepoLoadWithVersionResultBody<T>>>
+  loadWithVersion: (t: string, args: any) => Promise<Result<IRepoLoadWithVersionResultBody<T, V>>>
 }
 
 export interface IRepoLoadIfNewerVersionExistsResultBody<T extends Entity<any>> {
@@ -30,12 +30,12 @@ export interface IRepoLoadIfNewerVersionExistsResultBody<T extends Entity<any>> 
   newestVersion?: T
 }
 
-export interface IRepoVersionAwareNewer<T extends Entity<any>, R = void> extends IRepo<T, R> {
+export interface IRepoVersionAwareNewer<T extends Entity<any>, V extends string | Date, R = void> extends IRepo<T, R> {
 
   /**
   * Necessary for Cache to support {@link CacheControlEntity} and its revalidate flow
   *
   * @param currentVersion - can be a Date (e.g. to support Last-Modified flows) or a string (e.g. to support ETag flows)
   */
-  loadIfNewerVersionExists: (t: string, currentVersion: string | Date, args: any) => Promise<Result<IRepoLoadIfNewerVersionExistsResultBody<T>>>
+  loadIfNewerVersionExists: (t: string, currentVersion: V, args: any) => Promise<Result<IRepoLoadIfNewerVersionExistsResultBody<T>>>
 }

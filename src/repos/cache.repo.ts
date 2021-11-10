@@ -4,17 +4,17 @@ import { CacheControlEntity } from '../cache/cacheControl.entity'
 import { Entity } from '../entity'
 import { Result } from '../result'
 
-export interface ICacheRepoConfig<T extends Entity<any>> {
+export interface ICacheRepoConfig<T extends Entity<any>, V extends string | Date> {
 
   /**
    * The repo that serves as the cache storage
    */
-  cacheRepo: IRepoVersionAwareCurrent<T>
+  cacheRepo: IRepoVersionAwareCurrent<T, V>
 
   /**
    * The repo that serves as the data storage
    */
-  dataRepo: IRepoVersionAwareNewer<T>
+  dataRepo: IRepoVersionAwareNewer<T, V>
 }
 
 export interface CacheRepoMethodConfig {
@@ -32,11 +32,11 @@ export interface CacheRepoMethodConfig {
  * @alpha
  */
 @injectable()
-export class CacheRepo<T extends Entity<any>> implements IRepo<T> {
-  protected readonly cacheRepo: IRepoVersionAwareCurrent<T>
-  protected readonly dataRepo: IRepoVersionAwareNewer<T>
+export class CacheRepo<T extends Entity<any>, V extends string | Date> implements IRepo<T> {
+  protected readonly cacheRepo: IRepoVersionAwareCurrent<T, V>
+  protected readonly dataRepo: IRepoVersionAwareNewer<T, V>
 
-  public constructor (@unmanaged() config: ICacheRepoConfig<T>) {
+  public constructor (@unmanaged() config: ICacheRepoConfig<T, V>) {
     this.cacheRepo = config.cacheRepo
     this.dataRepo = config.dataRepo
   }
@@ -90,7 +90,7 @@ export class CacheRepo<T extends Entity<any>> implements IRepo<T> {
       return dataLoadResult
     } else if (cacheAction === 'revalidate') {
       // 2.2.2.2 ... revalidate
-      const newestVersionResult = await this.dataRepo.loadIfNewerVersionExists(key, cacheExistsBody.createdAt, config.dataRepo)
+      const newestVersionResult = await this.dataRepo.loadIfNewerVersionExists(key, cacheExistsBody.version, config.dataRepo)
       if (newestVersionResult.isSuccess) {
         const newestVersionBody = newestVersionResult.unwrap()
         // check if newer version exists

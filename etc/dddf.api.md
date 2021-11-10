@@ -86,12 +86,12 @@ export interface CacheControlProps {
 }
 
 // @alpha
-export class CacheRepo<T extends Entity<any>> implements IRepo<T> {
-    constructor(config: ICacheRepoConfig<T>);
+export class CacheRepo<T extends Entity<any>, V extends string | Date> implements IRepo<T> {
+    constructor(config: ICacheRepoConfig<T, V>);
     // (undocumented)
-    protected readonly cacheRepo: IRepoVersionAwareCurrent<T>;
+    protected readonly cacheRepo: IRepoVersionAwareCurrent<T, V>;
     // (undocumented)
-    protected readonly dataRepo: IRepoVersionAwareNewer<T>;
+    protected readonly dataRepo: IRepoVersionAwareNewer<T, V>;
     // Warning: (ae-forgotten-export) The symbol "CacheRepoMethodConfig" needs to be exported by the entry point index.d.ts
     //
     // (undocumented)
@@ -180,9 +180,9 @@ export abstract class Entity<T, U extends string = string> {
 }
 
 // @public (undocumented)
-export interface ICacheRepoConfig<T extends Entity<any>> {
-    cacheRepo: IRepoVersionAwareCurrent<T>;
-    dataRepo: IRepoVersionAwareNewer<T>;
+export interface ICacheRepoConfig<T extends Entity<any>, V extends string | Date> {
+    cacheRepo: IRepoVersionAwareCurrent<T, V>;
+    dataRepo: IRepoVersionAwareNewer<T, V>;
 }
 
 // @public (undocumented)
@@ -212,23 +212,23 @@ export interface IRepoLoadIfNewerVersionExistsResultBody<T extends Entity<any>> 
 }
 
 // @public (undocumented)
-export interface IRepoLoadWithVersionResultBody<T extends Entity<any>> {
+export interface IRepoLoadWithVersionResultBody<T extends Entity<any>, V extends string | Date> {
     // (undocumented)
     createdAt: Date;
     // (undocumented)
     entity: T;
     // (undocumented)
-    version: string | Date;
+    version: V;
 }
 
 // @public (undocumented)
-export interface IRepoVersionAwareCurrent<T extends Entity<any>, R = void> extends IRepo<T, R> {
-    loadWithVersion: (t: string, args: any) => Promise<Result<IRepoLoadWithVersionResultBody<T>>>;
+export interface IRepoVersionAwareCurrent<T extends Entity<any>, V extends string | Date, R = void> extends IRepo<T, R> {
+    loadWithVersion: (t: string, args: any) => Promise<Result<IRepoLoadWithVersionResultBody<T, V>>>;
 }
 
 // @public (undocumented)
-export interface IRepoVersionAwareNewer<T extends Entity<any>, R = void> extends IRepo<T, R> {
-    loadIfNewerVersionExists: (t: string, currentVersion: string | Date, args: any) => Promise<Result<IRepoLoadIfNewerVersionExistsResultBody<T>>>;
+export interface IRepoVersionAwareNewer<T extends Entity<any>, V extends string | Date, R = void> extends IRepo<T, R> {
+    loadIfNewerVersionExists: (t: string, currentVersion: V, args: any) => Promise<Result<IRepoLoadIfNewerVersionExistsResultBody<T>>>;
 }
 
 // @public (undocumented)
