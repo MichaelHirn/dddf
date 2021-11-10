@@ -3390,6 +3390,491 @@
         },
         {
           "kind": "Interface",
+          "canonicalReference": "dddf!IRepoLoadIfNewerVersionExistsResultBody:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface IRepoLoadIfNewerVersionExistsResultBody<T extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "Entity",
+              "canonicalReference": "dddf!Entity:class"
+            },
+            {
+              "kind": "Content",
+              "text": "<any>"
+            },
+            {
+              "kind": "Content",
+              "text": "> "
+            }
+          ],
+          "releaseTag": "Public",
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "IRepoLoadIfNewerVersionExistsResultBody",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "dddf!IRepoLoadIfNewerVersionExistsResultBody#newerVersionExists:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "newerVersionExists: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "newerVersionExists",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "dddf!IRepoLoadIfNewerVersionExistsResultBody#newestVersion:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "newestVersion?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "newestVersion",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "dddf!IRepoLoadWithVersionResultBody:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface IRepoLoadWithVersionResultBody<T extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "Entity",
+              "canonicalReference": "dddf!Entity:class"
+            },
+            {
+              "kind": "Content",
+              "text": "<any>"
+            },
+            {
+              "kind": "Content",
+              "text": "> "
+            }
+          ],
+          "releaseTag": "Public",
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "IRepoLoadWithVersionResultBody",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "dddf!IRepoLoadWithVersionResultBody#createdAt:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "createdAt: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Date",
+                  "canonicalReference": "!Date:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "createdAt",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "dddf!IRepoLoadWithVersionResultBody#entity:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "entity: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "entity",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "dddf!IRepoLoadWithVersionResultBody#version:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "version: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Date",
+                  "canonicalReference": "!Date:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "version",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "dddf!IRepoVersionAwareCurrent:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface IRepoVersionAwareCurrent<T extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "Entity",
+              "canonicalReference": "dddf!Entity:class"
+            },
+            {
+              "kind": "Content",
+              "text": "<any>"
+            },
+            {
+              "kind": "Content",
+              "text": ", R = "
+            },
+            {
+              "kind": "Content",
+              "text": "void"
+            },
+            {
+              "kind": "Content",
+              "text": "> extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "IRepo",
+              "canonicalReference": "dddf!IRepo:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<T, R> "
+            }
+          ],
+          "releaseTag": "Public",
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "R",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 5
+              }
+            }
+          ],
+          "name": "IRepoVersionAwareCurrent",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "dddf!IRepoVersionAwareCurrent#loadWithVersion:member",
+              "docComment": "/**\n * Necessary for Cache to support {@link CacheControlEntity} to determine if cache entry is expired or not\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "loadWithVersion: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(t: string, args: any) => "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Result",
+                  "canonicalReference": "dddf!Result:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IRepoLoadWithVersionResultBody",
+                  "canonicalReference": "dddf!IRepoLoadWithVersionResultBody:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>>>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "loadWithVersion",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 8
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 6,
+              "endIndex": 8
+            }
+          ]
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "dddf!IRepoVersionAwareNewer:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface IRepoVersionAwareNewer<T extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "Entity",
+              "canonicalReference": "dddf!Entity:class"
+            },
+            {
+              "kind": "Content",
+              "text": "<any>"
+            },
+            {
+              "kind": "Content",
+              "text": ", R = "
+            },
+            {
+              "kind": "Content",
+              "text": "void"
+            },
+            {
+              "kind": "Content",
+              "text": "> extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "IRepo",
+              "canonicalReference": "dddf!IRepo:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<T, R> "
+            }
+          ],
+          "releaseTag": "Public",
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "R",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 5
+              }
+            }
+          ],
+          "name": "IRepoVersionAwareNewer",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "dddf!IRepoVersionAwareNewer#loadIfNewerVersionExists:member",
+              "docComment": "/**\n * Necessary for Cache to support {@link CacheControlEntity} and its revalidate flow\n *\n * @param currentVersion - can be a Date (e.g. to support Last-Modified flows) or a string (e.g. to support ETag flows)\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "loadIfNewerVersionExists: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(t: string, currentVersion: string | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Date",
+                  "canonicalReference": "!Date:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", args: any) => "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Result",
+                  "canonicalReference": "dddf!Result:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IRepoLoadIfNewerVersionExistsResultBody",
+                  "canonicalReference": "dddf!IRepoLoadIfNewerVersionExistsResultBody:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>>>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "loadIfNewerVersionExists",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 10
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 6,
+              "endIndex": 8
+            }
+          ]
+        },
+        {
+          "kind": "Interface",
           "canonicalReference": "dddf!IS3RepoConfig:interface",
           "docComment": "",
           "excerptTokens": [

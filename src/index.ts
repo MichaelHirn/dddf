@@ -7,7 +7,13 @@ export { AggregateRoot } from './aggregate'
 export { Entity } from './entity'
 export { JsonS3Repo } from './repos/jsonS3.repo'
 export { Mapper } from './mapper'
-export { IRepo } from './repo'
+export {
+  IRepo,
+  IRepoLoadIfNewerVersionExistsResultBody,
+  IRepoLoadWithVersionResultBody,
+  IRepoVersionAwareCurrent,
+  IRepoVersionAwareNewer
+} from './repo'
 export { Result } from './result'
 export { UrlService } from './services/url.service'
 export { ValueObject } from './valueObject'

@@ -88,12 +88,8 @@ export interface CacheControlProps {
 // @alpha
 export class CacheRepo<T extends Entity<any>> implements IRepo<T> {
     constructor(config: ICacheRepoConfig<T>);
-    // Warning: (ae-forgotten-export) The symbol "IRepoVersionAwareCurrent" needs to be exported by the entry point index.d.ts
-    //
     // (undocumented)
     protected readonly cacheRepo: IRepoVersionAwareCurrent<T>;
-    // Warning: (ae-forgotten-export) The symbol "IRepoVersionAwareNewer" needs to be exported by the entry point index.d.ts
-    //
     // (undocumented)
     protected readonly dataRepo: IRepoVersionAwareNewer<T>;
     // Warning: (ae-forgotten-export) The symbol "CacheRepoMethodConfig" needs to be exported by the entry point index.d.ts
@@ -205,6 +201,34 @@ export interface IRepo<T extends Entity<any>, R = void> {
     remove: (t: string, args: any) => Promise<Result<R>>;
     // (undocumented)
     save: (t: T, args: any) => Promise<Result<R>>;
+}
+
+// @public (undocumented)
+export interface IRepoLoadIfNewerVersionExistsResultBody<T extends Entity<any>> {
+    // (undocumented)
+    newerVersionExists: boolean;
+    // (undocumented)
+    newestVersion?: T;
+}
+
+// @public (undocumented)
+export interface IRepoLoadWithVersionResultBody<T extends Entity<any>> {
+    // (undocumented)
+    createdAt: Date;
+    // (undocumented)
+    entity: T;
+    // (undocumented)
+    version: string | Date;
+}
+
+// @public (undocumented)
+export interface IRepoVersionAwareCurrent<T extends Entity<any>, R = void> extends IRepo<T, R> {
+    loadWithVersion: (t: string, args: any) => Promise<Result<IRepoLoadWithVersionResultBody<T>>>;
+}
+
+// @public (undocumented)
+export interface IRepoVersionAwareNewer<T extends Entity<any>, R = void> extends IRepo<T, R> {
+    loadIfNewerVersionExists: (t: string, currentVersion: string | Date, args: any) => Promise<Result<IRepoLoadIfNewerVersionExistsResultBody<T>>>;
 }
 
 // @public (undocumented)
