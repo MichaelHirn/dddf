@@ -92,14 +92,24 @@ export class CacheRepo<T extends Entity<any>, V extends string | Date> implement
     protected readonly cacheRepo: IRepoVersionAwareCurrent<T, V>;
     // (undocumented)
     protected readonly dataRepo: IRepoVersionAwareNewer<T, V>;
-    // Warning: (ae-forgotten-export) The symbol "CacheRepoMethodConfig" needs to be exported by the entry point index.d.ts
-    //
     // (undocumented)
     load(key: string, config: CacheRepoMethodConfig): Promise<Result<T>>;
     // (undocumented)
     remove(key: string, config: CacheRepoMethodConfig): Promise<Result<void>>;
     // (undocumented)
     save(domainObject: T, config: CacheRepoMethodConfig): Promise<Result<void>>;
+}
+
+// @public (undocumented)
+export interface CacheRepoMethodConfig {
+    // Warning: (ae-incompatible-release-tags) The symbol "cacheControl" is marked as @public, but its signature references "CacheControlEntity" which is marked as @beta
+    //
+    // (undocumented)
+    cacheControl?: CacheControlEntity;
+    // (undocumented)
+    cacheRepo: any;
+    // (undocumented)
+    dataRepo: any;
 }
 
 // @public (undocumented)

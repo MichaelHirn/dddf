@@ -92,14 +92,24 @@ export class CacheRepo<T extends Entity<any>, V extends string | Date> implement
     protected readonly cacheRepo: IRepoVersionAwareCurrent<T, V>;
     // (undocumented)
     protected readonly dataRepo: IRepoVersionAwareNewer<T, V>;
-    // Warning: (ae-forgotten-export) The symbol "CacheRepoMethodConfig" needs to be exported by the entry point index.d.ts
-    //
     // (undocumented)
     load(key: string, config: CacheRepoMethodConfig): Promise<Result<T>>;
     // (undocumented)
     remove(key: string, config: CacheRepoMethodConfig): Promise<Result<void>>;
     // (undocumented)
     save(domainObject: T, config: CacheRepoMethodConfig): Promise<Result<void>>;
+}
+
+// @public (undocumented)
+export interface CacheRepoMethodConfig {
+    // Warning: (ae-incompatible-release-tags) The symbol "cacheControl" is marked as @public, but its signature references "CacheControlEntity" which is marked as @beta
+    //
+    // (undocumented)
+    cacheControl?: CacheControlEntity;
+    // (undocumented)
+    cacheRepo: any;
+    // (undocumented)
+    dataRepo: any;
 }
 
 // @public (undocumented)
@@ -274,7 +284,7 @@ export class Result<T> {
     toJson(): SerializedResult<T>;
     // (undocumented)
     unwrap(): T;
-    }
+}
 
 // @public (undocumented)
 export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoConfig = IS3RepoConfig> implements IRepo<T, R> {
@@ -386,7 +396,6 @@ export abstract class ValueObject<T extends ValueObjectProps> {
     // (undocumented)
     protected static toResultStrings(strings: string[], name: string): Result<string[]>;
 }
-
 
 // (No @packageDocumentation comment for this package)
 
