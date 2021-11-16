@@ -39,32 +39,32 @@ export interface CacheControlProps {
 }
 
 /**
-* Universal control for caching behavior, e.g. with {@link dddf#CacheRepo}.
-*
-* @remarks
-* For more information on caching and cache-control have a look at these two links:
-* - https://developers.google.com/web/fundamentals/performance/get-started/httpcaching-6
-* - https://jakearchibald.com/2016/caching-best-practices/
-*
-* @remarks
-* To get started you need to know that there are only four types of CacheControl:
-* 1. No Cache Control
-* 2. Immutable Cache Control
-* 3. Mutable Cache Control (Strict)
-* 4. Mutable Cache Control (Not Strict)
-* (see the four static methods below to create them easily)
-*
-* and they differ in how they handle fresh and expired caches (see `maxAge` and `isExpired`).
-*
-* There are only three ways they can respond to a fresh or expired cache (see `mustDoWhat`):
-* 1. refresh - load version directly from origin server, to not use any possible cache entries
-* 2. revalidate - check with origin server if a newer version exists before returning any possible cache entries
-* 3. nothing - return possible cache entries, do not check with origin server
-*
-* to see how each of the four types respond to fresh and expired caches see the CacheControl spec test file.
-*
-* @beta
-*/
+ * Universal control for caching behavior, e.g. with {@link dddf#CacheRepo}.
+ *
+ * @remarks
+ * For more information on caching and cache-control have a look at these two links:
+ * - https://developers.google.com/web/fundamentals/performance/get-started/httpcaching-6
+ * - https://jakearchibald.com/2016/caching-best-practices/
+ *
+ * @remarks
+ * To get started you need to know that there are only four types of CacheControl:
+ * 1. No Cache Control
+ * 2. Immutable Cache Control
+ * 3. Mutable Cache Control (Strict)
+ * 4. Mutable Cache Control (Not Strict)
+ * (see the four static methods below to create them easily)
+ *
+ * and they differ in how they handle fresh and expired caches (see `maxAge` and `isExpired`).
+ *
+ * There are only three ways they can respond to a fresh or expired cache (see `mustDoWhat`):
+ * 1. refresh - load version directly from origin server, to not use any possible cache entries
+ * 2. revalidate - check with origin server if a newer version exists before returning any possible cache entries
+ * 3. nothing - return possible cache entries, do not check with origin server
+ *
+ * to see how each of the four types respond to fresh and expired caches see the CacheControl spec test file.
+ *
+ * @beta
+ */
 export class CacheControlEntity extends Entity<CacheControlProps> {
   public subjectId (): string {
     return this.props.subjectId
