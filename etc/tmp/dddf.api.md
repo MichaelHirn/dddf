@@ -195,6 +195,32 @@ export interface ICacheRepoConfig<T extends Entity<any>, V extends string | Date
     dataRepo: IRepoVersionAwareNewer<T, V>;
 }
 
+// @beta
+export class IdentifierURN extends ValueObject<IdentifierURNProps> {
+    // (undocumented)
+    static from(namestring: string): Result<IdentifierURN>;
+    // (undocumented)
+    namestring(): string;
+    // (undocumented)
+    nid(): IdentifierURNProps['nid'];
+    // (undocumented)
+    nss(): IdentifierURNProps['nss'];
+}
+
+// @public (undocumented)
+export const IdentifierURNMapper: {
+    serialize: (identifier: IdentifierURN) => string;
+    deserialize: (namestring: string) => Result<IdentifierURN>;
+};
+
+// @public (undocumented)
+export interface IdentifierURNProps {
+    // (undocumented)
+    nid: string;
+    // (undocumented)
+    nss: string[];
+}
+
 // @public (undocumented)
 export interface IDynamoRepoConfig {
     // (undocumented)
@@ -396,6 +422,11 @@ export abstract class ValueObject<T extends ValueObjectProps> {
     // (undocumented)
     protected static toResultStrings(strings: string[], name: string): Result<string[]>;
 }
+
+// Warnings were encountered during analysis:
+//
+// src/identifierURN.ts:49:33 - (ae-incompatible-release-tags) The symbol "serialize" is marked as @public, but its signature references "IdentifierURN" which is marked as @beta
+// src/identifierURN.ts:51:1 - (ae-incompatible-release-tags) The symbol "deserialize" is marked as @public, but its signature references "IdentifierURN" which is marked as @beta
 
 // (No @packageDocumentation comment for this package)
 

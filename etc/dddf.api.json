@@ -3396,6 +3396,316 @@
           "extendsTokenRanges": []
         },
         {
+          "kind": "Class",
+          "canonicalReference": "dddf!IdentifierURN:class",
+          "docComment": "/**\n * A Uniform Resource Name Identifier, aka. a Uniform Resource Identifier (URI) that uses the urn scheme.\n *\n * @remarks\n *\n * For more information check out: https://en.wikipedia.org/wiki/Uniform_Resource_Name\n *\n * @beta\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class IdentifierURN extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "ValueObject",
+              "canonicalReference": "dddf!ValueObject:class"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "IdentifierURNProps",
+              "canonicalReference": "dddf!IdentifierURNProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "> "
+            }
+          ],
+          "releaseTag": "Beta",
+          "name": "IdentifierURN",
+          "members": [
+            {
+              "kind": "Method",
+              "canonicalReference": "dddf!IdentifierURN.from:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static from(namestring: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Result",
+                  "canonicalReference": "dddf!Result:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IdentifierURN",
+                  "canonicalReference": "dddf!IdentifierURN:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "isStatic": true,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 7
+              },
+              "releaseTag": "Beta",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "namestring",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "from"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "dddf!IdentifierURN#namestring:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "namestring(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Beta",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "namestring"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "dddf!IdentifierURN#nid:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "nid(): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IdentifierURNProps",
+                  "canonicalReference": "dddf!IdentifierURNProps:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "['nid']"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "releaseTag": "Beta",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "nid"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "dddf!IdentifierURN#nss:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "nss(): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IdentifierURNProps",
+                  "canonicalReference": "dddf!IdentifierURNProps:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "['nss']"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "releaseTag": "Beta",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "nss"
+            }
+          ],
+          "extendsTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          },
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "dddf!IdentifierURNMapper:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "IdentifierURNMapper: "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    serialize: (identifier: "
+            },
+            {
+              "kind": "Reference",
+              "text": "IdentifierURN",
+              "canonicalReference": "dddf!IdentifierURN:class"
+            },
+            {
+              "kind": "Content",
+              "text": ") => string;\n    deserialize: (namestring: string) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Result",
+              "canonicalReference": "dddf!Result:class"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "IdentifierURN",
+              "canonicalReference": "dddf!IdentifierURN:class"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n}"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "IdentifierURNMapper",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 8
+          }
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "dddf!IdentifierURNProps:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface IdentifierURNProps "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "IdentifierURNProps",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "dddf!IdentifierURNProps#nid:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "nid: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "nid",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "dddf!IdentifierURNProps#nss:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "nss: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "nss",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
           "kind": "Interface",
           "canonicalReference": "dddf!IDynamoRepoConfig:interface",
           "docComment": "",

@@ -17,3 +17,4 @@ export {
 export { Result } from './result'
 export { UrlService } from './services/url.service'
 export { ValueObject } from './valueObject'
+export { IdentifierURN, IdentifierURNMapper, IdentifierURNProps } from './identifierURN'
