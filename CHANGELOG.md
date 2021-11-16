@@ -1,3 +1,10 @@
+## [2.1.0](https://github.com/MichaelHirn/dddf/compare/v2.0.0...v2.1.0) (2021-11-16)
+
+
+### Features
+
+* add IdentifierURN ([b199016](https://github.com/MichaelHirn/dddf/commit/b199016d280687b43eb5a147a54a20d01b7564b7))
+
 ## [2.0.0](https://github.com/MichaelHirn/dddf/compare/v1.12.4...v2.0.0) (2021-11-16)
 
 
