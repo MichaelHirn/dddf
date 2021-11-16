@@ -1,3 +1,22 @@
+## [2.0.0](https://github.com/MichaelHirn/dddf/compare/v1.12.4...v2.0.0) (2021-11-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* add cache-control
+
+### Features
+
+* add cache-control ([85940d3](https://github.com/MichaelHirn/dddf/commit/85940d3bc42aafb12a13575564cefabd63c737da))
+
+
+### Bug Fixes
+
+* export all IRepo types ([b3b96b8](https://github.com/MichaelHirn/dddf/commit/b3b96b81ebbf615155bf6d2a6c574db8597f1bc9))
+* export CacheRepoMethodConfig ([b122b5c](https://github.com/MichaelHirn/dddf/commit/b122b5c8ce3cc77d841d1d3e05d7608ed91fb2e9))
+* generic type version ([ae02237](https://github.com/MichaelHirn/dddf/commit/ae0223711be2403286464589500cf7c0af1998aa))
+* provide CacheControlActions ([b357b38](https://github.com/MichaelHirn/dddf/commit/b357b38718a19d21877224076fb2e9d24333ba16))
+
 ### [1.12.4](https://github.com/MichaelHirn/dddf/compare/v1.12.3...v1.12.4) (2021-02-26)
 
 
