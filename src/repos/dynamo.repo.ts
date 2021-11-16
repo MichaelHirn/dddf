@@ -116,7 +116,7 @@ export abstract class DynamoRepo<T extends Entity<any>, U extends IDynamoRepoCon
     return Object.assign(queryParams, { TableName: this.tableName })
   }
 
-  public async deleteBatch (keys: string[]): Promise<Result<void>> {
+  public async removeBatch (keys: string[]): Promise<Result<void>> {
     const results = await Rx.from(keys).pipe(
       // we can have a maximum of 25 request items in a DynamoDB `batchWrite` request
       RxOps.bufferCount(25),
@@ -286,8 +286,8 @@ export abstract class DynamoRepo<T extends Entity<any>, U extends IDynamoRepoCon
     })
   }
 
-  public async delete (key: string): Promise<Result<void>> {
-    return await this.deleteBatch([key])
+  public async remove (key: string): Promise<Result<void>> {
+    return await this.removeBatch([key])
   }
 
   public async save (object: T): Promise<Result<void>> {

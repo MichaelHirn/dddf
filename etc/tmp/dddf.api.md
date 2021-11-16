@@ -12,23 +12,104 @@ import * as Rx from 'rxjs';
 export abstract class AggregateRoot<T> extends Entity<T> {
 }
 
+// @public (undocumented)
+export type CacheControlActions = 'refresh' | 'revalidate' | 'nothing';
+
+// @public (undocumented)
+export enum CacheControlAge {
+    // (undocumented)
+    DAY = 86400,
+    // (undocumented)
+    ETERNAL,
+    // (undocumented)
+    HOUR = 3600,
+    // (undocumented)
+    MINUTE = 60,
+    // (undocumented)
+    MONTH = 2592000,
+    // (undocumented)
+    QUARTER = 7776000,
+    // (undocumented)
+    SECOND = 1,
+    // (undocumented)
+    WEEK = 604800,
+    // (undocumented)
+    YEAR = 31536000
+}
+
+// @beta
+export class CacheControlEntity extends Entity<CacheControlProps> {
+    // (undocumented)
+    static asImmutableCache(maxAge: number, subjectId: string): Result<CacheControlEntity>;
+    // (undocumented)
+    static asMutableCacheNotStrict(maxAge: number, subjectId: string): Result<CacheControlEntity>;
+    // (undocumented)
+    static asMutableCacheStrict(maxAge: number, subjectId: string): Result<CacheControlEntity>;
+    // (undocumented)
+    static asNoCache(maxAge: number, subjectId: string): Result<CacheControlEntity>;
+    // (undocumented)
+    doCache(): boolean;
+    // (undocumented)
+    doNotCache(): boolean;
+    // (undocumented)
+    static from(props: CacheControlProps): Result<CacheControlEntity>;
+    // (undocumented)
+    isExpired(startDate: Date, nowDate?: Date): boolean;
+    // (undocumented)
+    isMustRevalidate(): boolean;
+    // (undocumented)
+    isNoCache(): boolean;
+    // (undocumented)
+    isNoStore(): boolean;
+    // (undocumented)
+    maxAge(): number;
+    // (undocumented)
+    mustDoWhat(startDate: Date, nowDate?: Date): CacheControlActions;
+    // (undocumented)
+    mustRefresh(startDate: Date, nowDate?: Date): boolean;
+    // (undocumented)
+    mustRevalidate(startDate: Date, nowDate?: Date): boolean;
+    // (undocumented)
+    subjectId(): string;
+}
+
+// @public (undocumented)
+export interface CacheControlProps {
+    maxAge: number;
+    // (undocumented)
+    mustRevalidate: boolean;
+    // (undocumented)
+    noCache: boolean;
+    // (undocumented)
+    noStore: boolean;
+    subjectId: string;
+}
+
 // @alpha
-export class CacheRepo<T extends Entity<any>> implements IRepo<T> {
-    constructor(config: ICacheRepoConfig<T>);
+export class CacheRepo<T extends Entity<any>, V extends string | Date> implements IRepo<T> {
+    constructor(config: ICacheRepoConfig<T, V>);
     // (undocumented)
-    protected readonly cacheRepo: IRepo<T>;
+    protected readonly cacheRepo: IRepoVersionAwareCurrent<T, V>;
     // (undocumented)
-    protected readonly dataRepo: IRepo<T>;
+    protected readonly dataRepo: IRepoVersionAwareNewer<T, V>;
     // (undocumented)
-    load(key: string, config: {
-        cacheRepo: any;
-        dataRepo: any;
-    }): Promise<Result<T>>;
+    load(key: string, config: CacheRepoMethodConfig): Promise<Result<T>>;
     // (undocumented)
-    save(domainObject: T, config: {
-        cacheRepo: any;
-        dataRepo: any;
-    }): Promise<Result<void>>;
+    remove(key: string, config: CacheRepoMethodConfig): Promise<Result<void>>;
+    // (undocumented)
+    save(domainObject: T, config: CacheRepoMethodConfig): Promise<Result<void>>;
+}
+
+// @public (undocumented)
+export interface CacheRepoMethodConfig {
+    // Warning: (ae-incompatible-release-tags) The symbol "cacheControl" is marked as @public, but its signature references "CacheControlEntity" which is marked as @beta
+    //
+    // (undocumented)
+    cacheControl?: CacheControlEntity;
+    // (undocumented)
+    cacheRepo: any;
+    // (undocumented)
+    dataRepo: any;
 }
 
 // @public (undocumented)
@@ -38,10 +119,6 @@ export abstract class DynamoRepo<T extends Entity<any>, U extends IDynamoRepoCon
     protected static addMissingKeys<T>(keys: string[], map: Map<string, Result<T>>): Map<string, Result<T>>;
     // (undocumented)
     protected db: AWS_2.DynamoDB;
-    // (undocumented)
-    delete(key: string): Promise<Result<void>>;
-    // (undocumented)
-    deleteBatch(keys: string[]): Promise<Result<void>>;
     // (undocumented)
     abstract deserialize(dynamoItem: any): Result<T>;
     // (undocumented)
@@ -79,6 +156,10 @@ export abstract class DynamoRepo<T extends Entity<any>, U extends IDynamoRepoCon
     // (undocumented)
     protected _query(queryParams: Partial<QueryParams>): Rx.Observable<ParallelQueryResponse>;
     // (undocumented)
+    remove(key: string): Promise<Result<void>>;
+    // (undocumented)
+    removeBatch(keys: string[]): Promise<Result<void>>;
+    // (undocumented)
     save(object: T): Promise<Result<void>>;
     // (undocumented)
     saveBatch(objects: T[]): Promise<Result<void>>;
@@ -109,9 +190,9 @@ export abstract class Entity<T, U extends string = string> {
 }
 
 // @public (undocumented)
-export interface ICacheRepoConfig<T extends Entity<any>> {
-    cacheRepo: IRepo<T>;
-    dataRepo: IRepo<T>;
+export interface ICacheRepoConfig<T extends Entity<any>, V extends string | Date> {
+    cacheRepo: IRepoVersionAwareCurrent<T, V>;
+    dataRepo: IRepoVersionAwareNewer<T, V>;
 }
 
 // @public (undocumented)
@@ -125,9 +206,39 @@ export interface IDynamoRepoConfig {
 // @public (undocumented)
 export interface IRepo<T extends Entity<any>, R = void> {
     // (undocumented)
-    load(t: string, args: any): Promise<Result<T>>;
+    load: (t: string, args: any) => Promise<Result<T>>;
     // (undocumented)
-    save(t: T, args: any): Promise<Result<R>>;
+    remove: (t: string, args: any) => Promise<Result<R>>;
+    // (undocumented)
+    save: (t: T, args: any) => Promise<Result<R>>;
+}
+
+// @public (undocumented)
+export interface IRepoLoadIfNewerVersionExistsResultBody<T extends Entity<any>> {
+    // (undocumented)
+    newerVersionExists: boolean;
+    // (undocumented)
+    newestVersion?: T;
+}
+
+// @public (undocumented)
+export interface IRepoLoadWithVersionResultBody<T extends Entity<any>, V extends string | Date> {
+    // (undocumented)
+    createdAt: Date;
+    // (undocumented)
+    entity: T;
+    // (undocumented)
+    version: V;
+}
+
+// @public (undocumented)
+export interface IRepoVersionAwareCurrent<T extends Entity<any>, V extends string | Date, R = void> extends IRepo<T, R> {
+    loadWithVersion: (t: string, args: any) => Promise<Result<IRepoLoadWithVersionResultBody<T, V>>>;
+}
+
+// @public (undocumented)
+export interface IRepoVersionAwareNewer<T extends Entity<any>, V extends string | Date, R = void> extends IRepo<T, R> {
+    loadIfNewerVersionExists: (t: string, currentVersion: V, args: any) => Promise<Result<IRepoLoadIfNewerVersionExistsResultBody<T>>>;
 }
 
 // @public (undocumented)
@@ -173,7 +284,7 @@ export class Result<T> {
     toJson(): SerializedResult<T>;
     // (undocumented)
     unwrap(): T;
-    }
+}
 
 // @public (undocumented)
 export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoConfig = IS3RepoConfig> implements IRepo<T, R> {
@@ -285,7 +396,6 @@ export abstract class ValueObject<T extends ValueObjectProps> {
     // (undocumented)
     protected static toResultStrings(strings: string[], name: string): Result<string[]>;
 }
-
 
 // (No @packageDocumentation comment for this package)
 
