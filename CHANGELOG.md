@@ -1,3 +1,10 @@
+### [2.1.1](https://github.com/MichaelHirn/dddf/compare/v2.1.0...v2.1.1) (2022-08-02)
+
+
+### Bug Fixes
+
+* s3 Prefix param ([7fc3ccb](https://github.com/MichaelHirn/dddf/commit/7fc3ccb26bb6c40ebae7ce5860b28711c9dd946e))
+
 ## [2.1.0](https://github.com/MichaelHirn/dddf/compare/v2.0.0...v2.1.0) (2021-11-16)
 
 
