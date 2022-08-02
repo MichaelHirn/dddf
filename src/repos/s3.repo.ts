@@ -63,10 +63,17 @@ export abstract class S3Repo<T extends Entity<any>, R = void, U extends IS3RepoC
   public abstract serialize (object: T): Result<string>
 
   protected getListParams (params: Partial<ListObjectsParams> = {}): ListObjectsParams {
+    if (this.objectPrefix && this.objectPrefix !== '') {
+      return {
+        MaxKeys: 1000,
+        ...params,
+        ...{ Prefix: this.objectPrefix, Bucket: this.bucketName }
+      }
+    }
     return {
       MaxKeys: 1000,
       ...params,
-      ...{ Prefix: this.objectPrefix, Bucket: this.bucketName }
+      ...{ Bucket: this.bucketName }
     }
   }
 
